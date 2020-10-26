@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Data.cs" />
+    <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\ControlJson.cs" />
     <Compile Include="Assets\ControlString.cs" />
     <Compile Include="Assets\Data.cs" />
