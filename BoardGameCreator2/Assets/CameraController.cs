@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float angle_speed;
+    private float angle_speed_x;
+    private float angle_speed_y;
     private float speed;
     private float mouse;
     Vector3 pos;
@@ -12,7 +13,8 @@ public class CameraController : MonoBehaviour
     bool angle_flag;
     private void Awake()
     {
-        angle_speed = 1.2f;
+        angle_speed_x = 1.2f;
+        angle_speed_y = 1.2f;
         speed = 0.1f;
         ang = transform.eulerAngles;
         angle_flag = false;
@@ -20,22 +22,24 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
+
         pos = transform.position;
+        ang = transform.eulerAngles;
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position = new Vector3(pos.x - speed, pos.y, pos.z);
+            transform.position = new Vector3(pos.x - (speed * Mathf.Sin((ang.y + 90) / 180 * Mathf.PI)), pos.y, pos.z - (speed * Mathf.Cos((ang.y + 90) / 180 * Mathf.PI)));
         }
         else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            transform.position = new Vector3(pos.x + speed, pos.y, pos.z);
+            transform.position = new Vector3(pos.x + (speed * Mathf.Sin((ang.y + 90) / 180 * Mathf.PI)), pos.y, pos.z + (speed * Mathf.Cos((ang.y + 90) / 180 * Mathf.PI)));
         }
         else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            transform.position = new Vector3(pos.x, pos.y, pos.z - speed);
+            transform.position = new Vector3(pos.x - (speed * Mathf.Sin(ang.y / 180 * Mathf.PI)), pos.y, pos.z - (speed * Mathf.Cos(ang.y / 180 * Mathf.PI)));
         }
         else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector3(pos.x, pos.y, pos.z + speed);
+            transform.position = new Vector3(pos.x + (speed * Mathf.Sin(ang.y / 180 * Mathf.PI)), pos.y, pos.z + (speed * Mathf.Cos(ang.y / 180 * Mathf.PI)));
         }
         if (Input.GetMouseButtonDown(2))
         {
@@ -53,10 +57,13 @@ public class CameraController : MonoBehaviour
         if (angle_flag)
         {
             ang = transform.eulerAngles;
-            mouse = Input.GetAxis("Mouse X");
-           // transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * angle_speed,0.0f));
-            transform.Rotate(new Vector3(0.0f,mouse * angle_speed * Mathf.Cos(ang.x / 90 * Mathf.PI/2),0.0f));
-            transform.Rotate(new Vector3(0.0f,0.0f, -mouse * angle_speed * Mathf.Sin(ang.x / 90 * Mathf.PI / 2)));
+            //カメラ左右
+            transform.Rotate(new Vector3(0.0f, Input.GetAxis("Mouse X") * angle_speed_x, 0.0f));
+
+            //カメラ上下
+            transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * angle_speed_y,0.0f));
+            ang = transform.eulerAngles;
+            transform.eulerAngles = new Vector3(ang.x,ang.y,0.0f);
         }
     }
 }
