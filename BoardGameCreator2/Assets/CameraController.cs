@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     private float angle_speed_y;
     private float speed;
     private float mouse;
+    public GameObject center_dot;
     Vector3 pos;
     Vector3 ang;
     bool angle_flag;
@@ -17,8 +18,14 @@ public class CameraController : MonoBehaviour
         angle_speed_y = 1.2f;
         speed = 0.1f;
         ang = transform.eulerAngles;
+        center_dot = GameObject.Find("Canvas").transform.Find("Aim").gameObject;
         angle_flag = false;
         Cursor.visible = true;
+    }
+
+    private void Start()
+    {
+        center_dot.SetActive(false);
     }
     private void Update()
     {
@@ -46,10 +53,12 @@ public class CameraController : MonoBehaviour
             if (angle_flag)
             {
                 Cursor.lockState = CursorLockMode.None;
+                center_dot.SetActive(false);
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                center_dot.SetActive(true);
             }
             Cursor.visible = !Cursor.visible;
             angle_flag = !angle_flag;

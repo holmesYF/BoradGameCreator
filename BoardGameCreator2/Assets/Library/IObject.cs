@@ -11,4 +11,5 @@ public interface IObject
 
     // Token: 0x0600003C RID: 60
     void PopUpInfo();
+    void MouseScrollWheel(bool flag);
 }

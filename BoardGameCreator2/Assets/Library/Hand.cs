@@ -76,35 +76,9 @@ public class Hand : MonoBehaviour
             this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
             Debug.Log(this.HaveObjectPos.transform);
         }
-        bool flag6 = Input.GetMouseButtonDown(1) && this.havedObject != null;
-        if (flag6)
+        if (Input.GetMouseButtonDown(1) && this.havedObject != null)
         {
-            IObject obj = null;
-            bool flag7 = this.havedObject.GetComponent<Piece>() != null;
-            if (flag7)
-            {
-                obj = this.havedObject.GetComponent<Piece>();
-            }
-            else
-            {
-                bool flag8 = this.havedObject.GetComponent<Card>() != null;
-                if (flag8)
-                {
-                    obj = this.havedObject.GetComponent<Card>();
-                }
-                else
-                {
-                    bool flag9 = this.havedObject.GetComponent<Deck>() != null;
-                    if (flag9)
-                    {
-                        obj = this.havedObject.GetComponent<Deck>();
-                    }
-                    else
-                    {
-                        Debug.Log("Nothing can right click object");
-                    }
-                }
-            }
+            IObject obj = GetIObject(havedObject);
             bool flag10 = obj != null;
             if (flag10)
             {
@@ -129,32 +103,7 @@ public class Hand : MonoBehaviour
                     bool flag14 = this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin";
                     if (flag14)
                     {
-                        IObject obj2 = null;
-                        bool flag15 = this.clickedGameObject.GetComponent<Piece>() != null;
-                        if (flag15)
-                        {
-                            obj2 = this.clickedGameObject.GetComponent<Piece>();
-                        }
-                        else
-                        {
-                            bool flag16 = this.clickedGameObject.GetComponent<Card>() != null;
-                            if (flag16)
-                            {
-                                obj2 = this.clickedGameObject.GetComponent<Card>();
-                            }
-                            else
-                            {
-                                bool flag17 = this.clickedGameObject.GetComponent<Deck>() != null;
-                                if (flag17)
-                                {
-                                    obj2 = this.clickedGameObject.GetComponent<Deck>();
-                                }
-                                else
-                                {
-                                    Debug.Log("Nothing can pop up object");
-                                }
-                            }
-                        }
+                        IObject obj2 = GetIObject(havedObject);
                         bool flag18 = obj2 != null;
                         if (flag18)
                         {
@@ -164,6 +113,46 @@ public class Hand : MonoBehaviour
                 }
             }
         }
+
+        if(havedObject != null)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                IObject iobj = GetIObject(havedObject);
+                iobj.MouseScrollWheel(true);
+            }
+            else if(Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                IObject iobj = GetIObject(havedObject);
+                iobj.MouseScrollWheel(false);
+            }
+        }
+    }
+
+
+    private IObject GetIObject(GameObject obj)
+    {
+        IObject iobj = null;
+        //bool flag7 = this.havedObject.GetComponent<Piece>() != null;
+        if (this.havedObject.GetComponent<Piece>() != null)
+        {
+            iobj = this.havedObject.GetComponent<Piece>();
+        }
+        //bool flag8 = this.havedObject.GetComponent<Card>() != null;
+        else if (this.havedObject.GetComponent<Card>() != null)
+        {
+            iobj = this.havedObject.GetComponent<Card>();
+        }
+        //bool flag9 = this.havedObject.GetComponent<Deck>() != null;
+        else if (this.havedObject.GetComponent<Deck>() != null)
+        {
+            iobj = this.havedObject.GetComponent<Deck>();
+        }
+        else
+        {
+            Debug.Log("Nothing IOobject");
+        }
+    return iobj;
     }
 
     // Token: 0x06000035 RID: 53 RVA: 0x00002439 File Offset: 0x00000639

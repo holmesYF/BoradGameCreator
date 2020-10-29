@@ -44,6 +44,23 @@ public class Piece : MonoBehaviour, IObject
     {
     }
 
+    public void MouseScrollWheel(bool dir)
+    {
+        TurnDirection(dir);
+    }
+
+    public void TurnDirection(bool direction)
+    {
+        if (direction)
+        {
+            transform.Rotate(new Vector3(0, 90, 0));
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0, -90, 0));
+        }
+    }
+
     // Token: 0x0600004B RID: 75 RVA: 0x00002D1C File Offset: 0x00000F1C
     public void testChangeObjectTextuer()
     {

@@ -52,6 +52,11 @@ public class Deck : MonoBehaviour, IObject
     {
     }
 
+    public void MouseScrollWheel(bool flag)
+    {
+        throw new NotImplementedException();
+    }
+
     // Token: 0x0400000F RID: 15
     private List<Card> card_list = new List<Card>();
 }

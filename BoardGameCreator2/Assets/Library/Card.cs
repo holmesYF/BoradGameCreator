@@ -40,4 +40,9 @@ public class Card : MonoBehaviour, IObject
     public void PopUpInfo()
     {
     }
+
+    public void MouseScrollWheel(bool flag)
+    {
+        throw new NotImplementedException();
+    }
 }
