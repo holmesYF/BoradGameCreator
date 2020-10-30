@@ -5,46 +5,75 @@ using UnityEngine;
 // Token: 0x0200000B RID: 11
 public class Hand : MonoBehaviour
 {
-    // Token: 0x04000012 RID: 18
     private GameObject clickedGameObject;
-
-    // Token: 0x04000013 RID: 19
     private GameObject havedObject;
-
-    // Token: 0x04000014 RID: 20
     private Transform HaveObjectPos;
 
-    // Token: 0x04000015 RID: 21
     private PhotonView photonview;
 
-    // Token: 0x04000016 RID: 22
     private Vector3 pos;
-    // Token: 0x06000034 RID: 52 RVA: 0x00002594 File Offset: 0x00000794
+
     private void Update()
     {
-
-        bool mouseButtonDown = Input.GetMouseButtonDown(0);
-        if (mouseButtonDown)
+        #region アイテム所持時フレーム処理用
+        if (havedObject != null)
         {
-            bool flag = this.havedObject == null;
-            if (flag)
+            //オブジェクトの位置をマウスに追従
+            this.pos = Camera.main.WorldToScreenPoint(this.HaveObjectPos.transform.position);
+            Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.pos.z);
+            Vector3 b = Camera.main.ScreenToWorldPoint(a);
+            this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
+            Debug.Log(this.HaveObjectPos.transform);
+
+            //左クリック
+            if (Input.GetMouseButtonDown(0))
             {
-                this.clickedGameObject = null;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit = default(RaycastHit);
-                bool flag2 = Physics.Raycast(ray, out hit);
-                if (flag2)
+                this.havedObject = null;
+                this.HaveObjectPos = null;
+                this.photonview = null;
+            }
+            //右クリック
+            else if (Input.GetMouseButtonDown(1) && this.havedObject != null)
+            {
+                IObject obj = GetIObject(havedObject);
+                bool flag10 = obj != null;
+                if (flag10)
                 {
-                    this.clickedGameObject = hit.collider.gameObject;
+                    obj.RightClick();
                 }
-                bool flag3 = this.clickedGameObject != null;
-                if (flag3)
+            }
+            //マウスホイール回転
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                IObject iobj = GetIObject(havedObject);
+                iobj.MouseScrollWheel(true);
+            }
+            //マウスホイール回転
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                IObject iobj = GetIObject(havedObject);
+                iobj.MouseScrollWheel(false);
+            }
+        }
+        #endregion
+
+        #region オブジェクト未所持時フレーム処理用
+        else
+        {
+            this.clickedGameObject = null;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = default(RaycastHit);
+            if (Physics.Raycast(ray, out hit))
+            {
+                this.clickedGameObject = hit.collider.gameObject;
+            }
+            if (this.clickedGameObject != null)
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
-                    bool flag4 = this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin";
-                    if (flag4)
+                    if (this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin")
                     {
-                        bool isMine = this.clickedGameObject.GetComponent<PhotonView>().IsMine;
-                        if (isMine)
+                        if (this.clickedGameObject.GetComponent<PhotonView>().IsMine)
                         {
                             this.havedObject = this.clickedGameObject;
                             this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
@@ -59,77 +88,123 @@ public class Hand : MonoBehaviour
                         }
                     }
                 }
-            }
-            else
-            {
-                this.havedObject = null;
-                this.HaveObjectPos = null;
-                this.photonview = null;
-            }
-        }
-        bool flag5 = this.havedObject != null;
-        if (flag5)
-        {
-            this.pos = Camera.main.WorldToScreenPoint(this.HaveObjectPos.transform.position);
-            Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.pos.z);
-            Vector3 b = Camera.main.ScreenToWorldPoint(a);
-            this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
-            Debug.Log(this.HaveObjectPos.transform);
-        }
-        if (Input.GetMouseButtonDown(1) && this.havedObject != null)
-        {
-            IObject obj = GetIObject(havedObject);
-            bool flag10 = obj != null;
-            if (flag10)
-            {
-                obj.RightClick();
-            }
-        }
-        else
-        {
-            bool flag11 = this.havedObject == null;
-            if (flag11)
-            {
-                Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit2 = default(RaycastHit);
-                bool flag12 = Physics.Raycast(ray2, out hit2);
-                if (flag12)
+                else
                 {
-                    this.clickedGameObject = hit2.collider.gameObject;
-                }
-                bool flag13 = this.clickedGameObject != null;
-                if (flag13)
-                {
-                    bool flag14 = this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin";
-                    if (flag14)
+                    IObject obj2 = GetIObject(havedObject);
+                    if (obj2 != null)
                     {
-                        IObject obj2 = GetIObject(havedObject);
-                        bool flag18 = obj2 != null;
-                        if (flag18)
-                        {
-                            obj2.PopUpInfo();
-                        }
+                        obj2.PopUpInfo();
                     }
                 }
             }
         }
+        #endregion
+        //    bool mouseButtonDown = Input.GetMouseButtonDown(0);
+        //    if (mouseButtonDown)
+        //    {
+        //        bool flag = this.havedObject == null;
+        //        if (flag)
+        //        {
+        //            this.clickedGameObject = null;
+        //            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //            RaycastHit hit = default(RaycastHit);
+        //            bool flag2 = Physics.Raycast(ray, out hit);
+        //            if (flag2)
+        //            {
+        //                this.clickedGameObject = hit.collider.gameObject;
+        //            }
+        //            bool flag3 = this.clickedGameObject != null;
+        //            if (flag3)
+        //            {
+        //                bool flag4 = this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin";
+        //                if (flag4)
+        //                {
+        //                    bool isMine = this.clickedGameObject.GetComponent<PhotonView>().IsMine;
+        //                    if (isMine)
+        //                    {
+        //                        this.havedObject = this.clickedGameObject;
+        //                        this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+        //                        this.photonview = this.havedObject.GetComponent<PhotonView>();
+        //                    }
+        //                    else
+        //                    {
+        //                        this.clickedGameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+        //                        this.havedObject = this.clickedGameObject;
+        //                        this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+        //                        this.photonview = this.havedObject.GetComponent<PhotonView>();
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            this.havedObject = null;
+        //            this.HaveObjectPos = null;
+        //            this.photonview = null;
+        //        }
+        //    }
+        //    bool flag5 = this.havedObject != null;
+        //    if (flag5)
+        //    {
+        //        this.pos = Camera.main.WorldToScreenPoint(this.HaveObjectPos.transform.position);
+        //        Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.pos.z);
+        //        Vector3 b = Camera.main.ScreenToWorldPoint(a);
+        //        this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
+        //        Debug.Log(this.HaveObjectPos.transform);
+        //    }
+        //    if (Input.GetMouseButtonDown(1) && this.havedObject != null)
+        //    {
+        //        IObject obj = GetIObject(havedObject);
+        //        bool flag10 = obj != null;
+        //        if (flag10)
+        //        {
+        //            obj.RightClick();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        bool flag11 = this.havedObject == null;
+        //        if (flag11)
+        //        {
+        //            Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //            RaycastHit hit2 = default(RaycastHit);
+        //            bool flag12 = Physics.Raycast(ray2, out hit2);
+        //            if (flag12)
+        //            {
+        //                this.clickedGameObject = hit2.collider.gameObject;
+        //            }
+        //            bool flag13 = this.clickedGameObject != null;
+        //            if (flag13)
 
-        if(havedObject != null)
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0)
-            {
-                IObject iobj = GetIObject(havedObject);
-                iobj.MouseScrollWheel(true);
-            }
-            else if(Input.GetAxis("Mouse ScrollWheel") < 0)
-            {
-                IObject iobj = GetIObject(havedObject);
-                iobj.MouseScrollWheel(false);
-            }
-        }
+        //            else if (this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin")
+        //            {
+        //                IObject obj2 = GetIObject(havedObject);
+        //                bool flag18 = obj2 != null;
+        //                if (flag18)
+        //                {
+        //                    obj2.PopUpInfo();
+        //                }
+        //            }
+
+        //        }
+        //    }
+
+        //    if(havedObject != null)
+        //    {
+        //        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        //        {
+        //            IObject iobj = GetIObject(havedObject);
+        //            iobj.MouseScrollWheel(true);
+        //        }
+        //        else if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        //        {
+        //            IObject iobj = GetIObject(havedObject);
+        //            iobj.MouseScrollWheel(false);
+        //        }
+        //    }
+        //}
+
     }
-
-
     private IObject GetIObject(GameObject obj)
     {
         IObject iobj = null;
@@ -152,7 +227,7 @@ public class Hand : MonoBehaviour
         {
             Debug.Log("Nothing IOobject");
         }
-    return iobj;
+        return iobj;
     }
 
     // Token: 0x06000035 RID: 53 RVA: 0x00002439 File Offset: 0x00000639
@@ -165,6 +240,4 @@ public class Hand : MonoBehaviour
     {
         this.test();
     }
-
-    
 }

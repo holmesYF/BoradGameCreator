@@ -27,6 +27,11 @@ public class Piece : MonoBehaviour, IObject
         this.data = base.gameObject.GetComponent<Data>();
     }
 
+    private void Start()
+    {
+        this.f_controler.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1);
+    }
+
     // Token: 0x06000048 RID: 72 RVA: 0x00002CF6 File Offset: 0x00000EF6
     public void RightClick()
     {
