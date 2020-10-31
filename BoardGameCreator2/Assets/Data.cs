@@ -10,6 +10,7 @@ public class Data : MonoBehaviour
     public string imageURL1;
     public string imageURL2;
     public int num;
+    public int size;
 
     private string exeURL;
     private PhotonView my_photonView;

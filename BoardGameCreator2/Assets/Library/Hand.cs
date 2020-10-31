@@ -5,17 +5,17 @@ using UnityEngine;
 // Token: 0x0200000B RID: 11
 public class Hand : MonoBehaviour
 {
-    private GameObject clickedGameObject;
+    private GameObject rayhitobject;
     private GameObject havedObject;
     private Transform HaveObjectPos;
-
+    private IObject iobj;
     private PhotonView photonview;
 
     private Vector3 pos;
 
     private void Update()
     {
-        #region アイテム所持時フレーム処理用
+        #region オブジェクト所持時フレーム処理用
         if (havedObject != null)
         {
             //オブジェクトの位置をマウスに追従
@@ -28,6 +28,7 @@ public class Hand : MonoBehaviour
             //左クリック
             if (Input.GetMouseButtonDown(0))
             {
+                iobj.ChangeHavedFlag(false);
                 this.havedObject = null;
                 this.HaveObjectPos = null;
                 this.photonview = null;
@@ -60,37 +61,41 @@ public class Hand : MonoBehaviour
         #region オブジェクト未所持時フレーム処理用
         else
         {
-            this.clickedGameObject = null;
+            this.rayhitobject = null;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = default(RaycastHit);
             if (Physics.Raycast(ray, out hit))
             {
-                this.clickedGameObject = hit.collider.gameObject;
+                this.rayhitobject = hit.collider.gameObject;
             }
-            if (this.clickedGameObject != null)
+            if (this.rayhitobject != null)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (this.clickedGameObject.tag == "moveable" || this.clickedGameObject.tag == "coin")
+                    if (this.rayhitobject.tag == "moveable" || this.rayhitobject.tag == "coin")
                     {
-                        if (this.clickedGameObject.GetComponent<PhotonView>().IsMine)
-                        {
-                            this.havedObject = this.clickedGameObject;
-                            this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
-                            this.photonview = this.havedObject.GetComponent<PhotonView>();
-                        }
-                        else
-                        {
-                            this.clickedGameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
-                            this.havedObject = this.clickedGameObject;
-                            this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
-                            this.photonview = this.havedObject.GetComponent<PhotonView>();
+                        iobj = GetIObject(rayhitobject);
+                        if (!iobj.havedFlag){
+                            iobj.ChangeHavedFlag(true);
+                            if (this.rayhitobject.GetComponent<PhotonView>().IsMine)
+                            {
+                                this.havedObject = this.rayhitobject;
+                                this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+                                this.photonview = this.havedObject.GetComponent<PhotonView>();
+                            }
+                            else
+                            {
+                                this.rayhitobject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+                                this.havedObject = this.rayhitobject;
+                                this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+                                this.photonview = this.havedObject.GetComponent<PhotonView>();
+                            }
                         }
                     }
                 }
                 else
                 {
-                    IObject obj2 = GetIObject(havedObject);
+                    IObject obj2 = GetIObject(rayhitobject);
                     if (obj2 != null)
                     {
                         obj2.PopUpInfo();
@@ -99,6 +104,7 @@ public class Hand : MonoBehaviour
             }
         }
         #endregion
+        #region 仕様変更前
         //    bool mouseButtonDown = Input.GetMouseButtonDown(0);
         //    if (mouseButtonDown)
         //    {
@@ -203,25 +209,28 @@ public class Hand : MonoBehaviour
         //        }
         //    }
         //}
-
+        #endregion
     }
     private IObject GetIObject(GameObject obj)
     {
         IObject iobj = null;
-        //bool flag7 = this.havedObject.GetComponent<Piece>() != null;
-        if (this.havedObject.GetComponent<Piece>() != null)
+        if (obj.GetComponent<Piece>() != null)
         {
-            iobj = this.havedObject.GetComponent<Piece>();
+            iobj = obj.GetComponent<Piece>();
         }
         //bool flag8 = this.havedObject.GetComponent<Card>() != null;
-        else if (this.havedObject.GetComponent<Card>() != null)
+        else if (obj.GetComponent<Card>() != null)
         {
-            iobj = this.havedObject.GetComponent<Card>();
+            iobj = obj.GetComponent<Card>();
         }
         //bool flag9 = this.havedObject.GetComponent<Deck>() != null;
-        else if (this.havedObject.GetComponent<Deck>() != null)
+        else if (obj.GetComponent<Deck>() != null)
         {
-            iobj = this.havedObject.GetComponent<Deck>();
+            iobj = obj.GetComponent<Deck>();
+        }
+        else if(obj.GetComponent<Board>() != null)
+        {
+            iobj = obj.GetComponent<Board>();
         }
         else
         {

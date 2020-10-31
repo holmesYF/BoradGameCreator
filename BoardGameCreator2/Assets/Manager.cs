@@ -64,13 +64,19 @@ public class Manager : MonoBehaviourPunCallbacks
                 {
                     if(temp_data.type == "piece")
                     {
-                        GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(UnityEngine.Random.Range(-4, 4), 0, UnityEngine.Random.Range(-4, 4)), Quaternion.identity);
+                        GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
                     }
                     else if(temp_data.type == "card")
                     {
                         Debug.Log("まだできてない");
+                    }
+                    else if(temp_data.type == "board")
+                    {
+                        GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(0, -0.5f, 0), Quaternion.identity);
+                        obj.GetComponent<Data>().cloneData(data);
+                        obj.GetComponent<Data>().setexeURL(ExeURL);
                     }
                     else
                     {

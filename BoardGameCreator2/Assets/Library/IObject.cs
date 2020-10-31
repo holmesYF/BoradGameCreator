@@ -1,15 +1,40 @@
 ﻿using System;
+using Photon.Pun;
+using UnityEngine;
+abstract public class IObject : MonoBehaviour
+{ 
+    public bool havedFlag = false;
+    protected PhotonView my_photonView;
+    protected Data data;
 
-// Token: 0x0200000D RID: 13
-public interface IObject
-{
-    // Token: 0x0600003A RID: 58
-    void RightClick();
+    virtual public void Awake()
+    {
+        my_photonView = gameObject.GetComponent<PhotonView>();
+        data = gameObject.GetComponent<Data>();
+    }
+    abstract public void RightClick();
 
-    // Token: 0x0600003B RID: 59
-    void LeftClick();
+    abstract public void LeftClick();
+    abstract public void PopUpInfo();
+    virtual public void MouseScrollWheel(bool direction) {
+        if (direction)
+        {
+            transform.Rotate(new Vector3(0, 90, 0));
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0, -90, 0));
+        }
 
-    // Token: 0x0600003C RID: 60
-    void PopUpInfo();
-    void MouseScrollWheel(bool flag);
+    }
+    virtual public void ChangeHavedFlag(bool flag) {
+        my_photonView.RPC("_ChangeHavedFlag", RpcTarget.All, flag);
+    }
+    [PunRPC]
+    virtual protected void _ChangeHavedFlag(bool flag)
+    {
+        havedFlag = flag;
+    }
+
+
 }

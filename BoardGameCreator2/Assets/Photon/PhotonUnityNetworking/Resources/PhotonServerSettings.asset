@@ -42,6 +42,7 @@ MonoBehaviour:
   - CreateBoardGameObject
   - _cloneData
   - _setexeURL
+  - _ChangeHavedFlag
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

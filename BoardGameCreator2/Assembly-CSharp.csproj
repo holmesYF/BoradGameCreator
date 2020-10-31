@@ -67,11 +67,12 @@
     <Compile Include="Assets\ControlJson.cs" />
     <Compile Include="Assets\ControlString.cs" />
     <Compile Include="Assets\Data.cs" />
-    <Compile Include="Assets\FileControl.cs" />
     <Compile Include="Assets\Folder_data.cs" />
     <Compile Include="Assets\Info.cs" />
+    <Compile Include="Assets\Library\Board.cs" />
     <Compile Include="Assets\Library\Card.cs" />
     <Compile Include="Assets\Library\Deck.cs" />
+    <Compile Include="Assets\Library\FileControl.cs" />
     <Compile Include="Assets\Library\Hand.cs" />
     <Compile Include="Assets\Library\IObject.cs" />
     <Compile Include="Assets\Library\OpenFileName.cs" />
