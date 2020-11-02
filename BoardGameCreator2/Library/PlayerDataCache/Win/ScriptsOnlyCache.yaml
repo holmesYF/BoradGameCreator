@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Board
     - CameraController
+    - Card
     - Data
     - FileControl
     - Hand
@@ -77,21 +78,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10816}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 11264}
+      Script: {instanceID: 11266}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 11518}
     - Class: 114
-      Script: {instanceID: 11720}
+      Script: {instanceID: 11722}
     - Class: 114
-      Script: {instanceID: 11724}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11802}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 14164}
+      Script: {instanceID: 14174}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -168,49 +169,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10450}
     - Class: 114
-      Script: {instanceID: 10634}
+      Script: {instanceID: 10506}
     - Class: 114
-      Script: {instanceID: 10696}
+      Script: {instanceID: 10636}
     - Class: 114
-      Script: {instanceID: 10816}
+      Script: {instanceID: 10698}
     - Class: 114
-      Script: {instanceID: 10868}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 10940}
+      Script: {instanceID: 10870}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 11026}
+      Script: {instanceID: 11020}
     - Class: 114
-      Script: {instanceID: 11040}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11224}
+      Script: {instanceID: 11042}
     - Class: 114
-      Script: {instanceID: 11236}
+      Script: {instanceID: 11226}
     - Class: 114
-      Script: {instanceID: 11242}
+      Script: {instanceID: 11238}
     - Class: 114
-      Script: {instanceID: 11268}
+      Script: {instanceID: 11244}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11270}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11720}
+      Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11724}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11802}
+      Script: {instanceID: 11722}
     - Class: 114
-      Script: {instanceID: 11814}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11836}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 11844}
+      Script: {instanceID: 11816}
     - Class: 114
-      Script: {instanceID: 14166}
+      Script: {instanceID: 11838}
     - Class: 114
-      Script: {instanceID: 14444}
+      Script: {instanceID: 11846}
+    - Class: 114
+      Script: {instanceID: 14176}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -752,6 +755,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomPlayerTtlProperty
   - hash:
       serializedVersion: 2
+      Hash: a6bdb207649a8bfbab0a949274c019df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Board
+  - hash:
+      serializedVersion: 2
       Hash: f941c3a384168571b7d90f58ec4986bc
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1220,7 +1229,7 @@ ScriptsOnlyBuild:
     className: SlotLanes
   - hash:
       serializedVersion: 2
-      Hash: a6bdb207649a8bfbab0a949274c019df
+      Hash: b3cc2a4a90446660ef52f9af9867af28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Card
@@ -1274,7 +1283,7 @@ ScriptsOnlyBuild:
     className: ProceduralController
   - hash:
       serializedVersion: 2
-      Hash: 51e9fe21bd339812e949ec1446b6d51c
+      Hash: a6bdb207649a8bfbab0a949274c019df
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Piece
@@ -1602,12 +1611,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: a6bdb207649a8bfbab0a949274c019df
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Board
   platform: 5
   scenePathNames:
   - Assets/Scenes/Load.unity

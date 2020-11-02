@@ -70,7 +70,9 @@ public class Manager : MonoBehaviourPunCallbacks
                     }
                     else if(temp_data.type == "card")
                     {
-                        Debug.Log("まだできてない");
+                        GameObject obj = PhotonNetwork.Instantiate("Card_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.Euler(90, 0, 0));
+                        obj.GetComponent<Data>().cloneData(data);
+                        obj.GetComponent<Data>().setexeURL(ExeURL);
                     }
                     else if(temp_data.type == "board")
                     {

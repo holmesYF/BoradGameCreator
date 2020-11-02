@@ -35,6 +35,4 @@ abstract public class IObject : MonoBehaviour
     {
         havedFlag = flag;
     }
-
-
 }
