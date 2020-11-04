@@ -43,6 +43,8 @@ MonoBehaviour:
   - _cloneData
   - _setexeURL
   - _ChangeHavedFlag
+  - _HideObject
+  - _Appear
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

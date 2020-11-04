@@ -4,14 +4,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviourPunCallbacks
+public class Manager : MonoBehaviourPunCallbacks,IHandOver
 {
     public Camera main_camera;//=視点カメラ
     public List<string> datas;
+    public GameObject HandContent;
+    public GameObject HandButton;
+    private Transform Content_transform;
     public string ExeURL;
     private void Awake()
     {
         ExeURL = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\');
+        Content_transform = HandContent.transform;
+        Debug.Log(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
     }
     private void Start()
     {
@@ -31,6 +36,7 @@ public class Manager : MonoBehaviourPunCallbacks
     }
 
     // マッチングが成功した時に呼ばれるコールバック
+
     public override void OnJoinedRoom()
     {
         //GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(0, 0, 0), Quaternion.identity);
@@ -73,6 +79,7 @@ public class Manager : MonoBehaviourPunCallbacks
                         GameObject obj = PhotonNetwork.Instantiate("Card_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.Euler(90, 0, 0));
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Card>().manager = this;
                     }
                     else if(temp_data.type == "board")
                     {
@@ -87,6 +94,13 @@ public class Manager : MonoBehaviourPunCallbacks
                 }
             }
         }
+    }
+
+    public void AddHand(GameObject gameObject)
+    {
+        GameObject obj = Instantiate(HandButton) as GameObject;
+        obj.transform.parent = Content_transform;
+        obj.GetComponent<HandCard>().setCard(gameObject);
     }
 }
 

@@ -13,6 +13,10 @@ public class Hand : MonoBehaviour
 
     private Vector3 pos;
 
+    private void Awake()
+    {
+
+    }
     private void Update()
     {
         #region オブジェクト所持時フレーム処理用
@@ -40,7 +44,7 @@ public class Hand : MonoBehaviour
                 bool flag10 = obj != null;
                 if (flag10)
                 {
-                    obj.RightClick();
+                    obj.HavedRightClick();
                 }
             }
             //マウスホイール回転
@@ -77,7 +81,7 @@ public class Hand : MonoBehaviour
                         iobj = GetIObject(rayhitobject);
                         if (!iobj.havedFlag){
                             iobj.ChangeHavedFlag(true);
-                            if (this.rayhitobject.GetComponent<PhotonView>().IsMine)
+                            if (true || this.rayhitobject.GetComponent<PhotonView>().IsMine)
                             {
                                 this.havedObject = this.rayhitobject;
                                 this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
@@ -89,6 +93,26 @@ public class Hand : MonoBehaviour
                                 this.havedObject = this.rayhitobject;
                                 this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
                                 this.photonview = this.havedObject.GetComponent<PhotonView>();
+                            }
+                        }
+                    }
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    if (this.rayhitobject.tag == "moveable" || this.rayhitobject.tag == "coin")
+                    {
+                        iobj = GetIObject(rayhitobject);
+                        if (!iobj.havedFlag)
+                        {
+                            iobj.ChangeHavedFlag(true);
+                            if (this.rayhitobject.GetComponent<PhotonView>().IsMine)
+                            {
+                                iobj.NotHavedRightClick();
+                            }
+                            else
+                            {
+                                this.rayhitobject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+                                iobj.NotHavedRightClick();
                             }
                         }
                     }

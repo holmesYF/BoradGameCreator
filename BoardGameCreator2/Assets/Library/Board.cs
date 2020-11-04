@@ -27,7 +27,12 @@ public class Board : IObject
         
     }
 
-    public override void RightClick()
+    public override void HavedRightClick()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void NotHavedRightClick()
     {
         throw new System.NotImplementedException();
     }

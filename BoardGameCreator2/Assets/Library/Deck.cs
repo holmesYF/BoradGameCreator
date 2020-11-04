@@ -6,7 +6,7 @@ using UnityEngine;
 public class Deck : IObject
 {
     // Token: 0x06000021 RID: 33 RVA: 0x00002439 File Offset: 0x00000639
-    public override void RightClick()
+    public override void HavedRightClick()
     {
     }
 
@@ -50,6 +50,11 @@ public class Deck : IObject
     // Token: 0x06000028 RID: 40 RVA: 0x00002439 File Offset: 0x00000639
     private void Update()
     {
+    }
+
+    public override void NotHavedRightClick()
+    {
+        throw new NotImplementedException();
     }
 
     // Token: 0x0400000F RID: 15

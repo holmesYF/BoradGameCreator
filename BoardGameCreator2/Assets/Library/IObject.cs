@@ -12,7 +12,8 @@ abstract public class IObject : MonoBehaviour
         my_photonView = gameObject.GetComponent<PhotonView>();
         data = gameObject.GetComponent<Data>();
     }
-    abstract public void RightClick();
+    abstract public void HavedRightClick();
+    abstract public void NotHavedRightClick();
 
     abstract public void LeftClick();
     abstract public void PopUpInfo();

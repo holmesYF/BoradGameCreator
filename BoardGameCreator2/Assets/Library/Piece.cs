@@ -20,7 +20,7 @@ public class Piece : IObject
         this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1);
     }
 
-    public override void RightClick()
+    public override void HavedRightClick()
     {
         Debug.Log("Piece click by right");
         my_photonView.RPC("ChangeObjectTextuer", RpcTarget.All, Array.Empty<object>());
@@ -58,4 +58,8 @@ public class Piece : IObject
         }
     }
 
+    public override void NotHavedRightClick()
+    {
+        throw new NotImplementedException();
+    }
 }

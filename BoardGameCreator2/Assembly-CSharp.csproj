@@ -68,6 +68,8 @@
     <Compile Include="Assets\ControlString.cs" />
     <Compile Include="Assets\Data.cs" />
     <Compile Include="Assets\Folder_data.cs" />
+    <Compile Include="Assets\HandCard.cs" />
+    <Compile Include="Assets\IHandOver.cs" />
     <Compile Include="Assets\Info.cs" />
     <Compile Include="Assets\Library\Board.cs" />
     <Compile Include="Assets\Library\Card.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Library\Piece.cs" />
     <Compile Include="Assets\Load.cs" />
     <Compile Include="Assets\Manager.cs" />
+    <Compile Include="Assets\MyHandButton.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />

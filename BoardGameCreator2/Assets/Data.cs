@@ -14,6 +14,7 @@ public class Data : MonoBehaviour
 
     private string exeURL;
     private PhotonView my_photonView;
+
     //public void setData(string type, string imageURL1)
     //{
     //    this.type = type;

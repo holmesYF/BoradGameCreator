@@ -8,6 +8,8 @@ public class Card : IObject
     public Texture texture;
     private FileControl f_controller;
     private bool saface = true;
+    public IHandOver manager;
+
 
 
     public override void Awake()
@@ -23,10 +25,10 @@ public class Card : IObject
     {
     }
 
-    public override void RightClick()
+    public override void HavedRightClick()
     {
         Debug.Log("Card click by right");
-        my_photonView.RPC("ChangeObjectTextuer", RpcTarget.All, Array.Empty<object>());
+        my_photonView.RPC("ChangeObjectTextuer", RpcTarget.All);
     }
 
     public override void LeftClick()
@@ -42,6 +44,16 @@ public class Card : IObject
     public GameObject GetRefObject()
     {
         return base.gameObject;
+    }
+
+    public void HideObject()
+    {
+        my_photonView.RPC("_HideObject",RpcTarget.All);
+    }
+
+    public void Appear()
+    {
+        my_photonView.RPC("_Appear",RpcTarget.All);
     }
 
 
@@ -65,5 +77,23 @@ public class Card : IObject
             this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1);
             this.saface = true;
         }
+    }
+
+    [PunRPC]
+    public void _HideObject()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    [PunRPC]
+    public void _Appear()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public override void NotHavedRightClick()
+    {
+        HideObject();
+        manager.AddHand(this.gameObject);
     }
 }
