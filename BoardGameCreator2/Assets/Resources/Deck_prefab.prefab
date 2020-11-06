@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83d676718ef42f44eafd00162f12e48d, type: 2}
+  - {fileID: 2100000, guid: b033ef80d51138b45ac3b38e7ec49f70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7481828816828423937}
   - component: {fileID: 8859466159663596625}
   m_Layer: 0
-  m_Name: Deck
+  m_Name: Deck_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a90d66cee16a2c14d8d113f0173b0a5a, type: 2}
+  - {fileID: 2100000, guid: 12338ac4bbd58d945b6dc72480764f18, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

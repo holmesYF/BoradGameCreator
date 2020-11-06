@@ -11,10 +11,15 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     public GameObject HandContent;
     public GameObject HandButton;
     private Transform Content_transform;
+    public GameObject panel;//=手札のパネル
     public string ExeURL;
     private void Awake()
     {
+#if UNITY_EDITOR
+        ExeURL = @"C:\Users\Koichiro Yufu\Desktop\もういっこ用\";
+#else
         ExeURL = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\');
+#endif
         Content_transform = HandContent.transform;
         Debug.Log(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
     }
@@ -28,11 +33,11 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     public override void OnConnectedToMaster()
     {
         // room_nameの値の名前のルームに参加する（ルームが無ければ作成してから参加する）
-        if(Load.room_name == null)
+        if(Load.ROOM_NAME == null)
         {
-            Load.room_name = "room";
+            Load.ROOM_NAME = "room";
         }
-        PhotonNetwork.JoinOrCreateRoom(Load.room_name, new RoomOptions(), TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(Load.ROOM_NAME, new RoomOptions(), TypedLobby.Default);
     }
 
     // マッチングが成功した時に呼ばれるコールバック
@@ -40,7 +45,11 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     public override void OnJoinedRoom()
     {
         //GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(0, 0, 0), Quaternion.identity);
-        datas = ControlJson.LoadJson(@"./BoardGameData");
+#if UNITY_EDITOR
+        datas = ControlJson.LoadJson(@"C:\Users\Koichiro Yufu\Desktop\もういっこ用\BoardGameData\"  + Load.FOLDER_NAME );
+#else
+        datas = ControlJson.LoadJson(@"./BoardGameData\" + Fol);
+#endif
         foreach (string item in datas)
         {
             Debug.Log(item);
@@ -79,7 +88,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                         GameObject obj = PhotonNetwork.Instantiate("Card_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.Euler(90, 0, 0));
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
-                        obj.GetComponent<Card>().manager = this;
+                        obj.GetComponent<Card>().manager_handover = this;
                     }
                     else if(temp_data.type == "board")
                     {
@@ -101,6 +110,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
         GameObject obj = Instantiate(HandButton) as GameObject;
         obj.transform.parent = Content_transform;
         obj.GetComponent<HandCard>().setCard(gameObject);
+        obj.GetComponent<HandCard>().setPanel(panel);
     }
 }
 

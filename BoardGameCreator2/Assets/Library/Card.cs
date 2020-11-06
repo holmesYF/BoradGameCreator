@@ -8,7 +8,7 @@ public class Card : IObject
     public Texture texture;
     private FileControl f_controller;
     private bool saface = true;
-    public IHandOver manager;
+    public IHandOver manager_handover;
 
 
 
@@ -19,7 +19,7 @@ public class Card : IObject
     }
     private void Start()
     {
-        this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1);
+        this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
     private void Update()
     {
@@ -74,7 +74,7 @@ public class Card : IObject
         else
         {
             Debug.Log("change to image1");
-            this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1);
+            this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
             this.saface = true;
         }
     }
@@ -94,6 +94,6 @@ public class Card : IObject
     public override void NotHavedRightClick()
     {
         HideObject();
-        manager.AddHand(this.gameObject);
+        manager_handover.AddHand(this.gameObject);
     }
 }

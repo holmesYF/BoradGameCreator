@@ -1,0 +1,2 @@
+C:\Users\Koichiro Yufu\Desktop\卒研\BoardGameCreator2\obj\Release\PhotonUnityNetworking.csprojAssemblyReference.cache
+C:\Users\Koichiro Yufu\Desktop\卒研\BoardGameCreator2\obj\Release\PhotonUnityNetworking.csproj.CoreCompileInputs.cache

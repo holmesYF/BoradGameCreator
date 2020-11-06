@@ -9,7 +9,8 @@ public class Load : MonoBehaviour
     public GameObject text_field;
     private Text text;
     public static string loadURL;
-    public static string room_name;
+    public static string ROOM_NAME;
+    public static string FOLDER_NAME;
     private void Awake()
     {
         text = text_field.GetComponent<Text>();
@@ -21,7 +22,7 @@ public class Load : MonoBehaviour
 
     public void Load_room()
     {
-        Load.room_name = text.text;
+        Load.ROOM_NAME = text.text;
         SceneManager.LoadScene("Game");
     }
 

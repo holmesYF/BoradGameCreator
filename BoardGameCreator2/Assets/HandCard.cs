@@ -17,6 +17,7 @@ public class HandCard : MonoBehaviour
     Data data;
     Image image;
     Button button;
+    public GameObject panel;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class HandCard : MonoBehaviour
         parent = transform.parent.gameObject;
         button.onClick.AddListener(OutPutHand);
         data = card_object.GetComponent<Data>();
-        StartCoroutine(SetSprite(this.data.getexeURL() + "\\BoardGameData\\" + this.data.imageURL1));
+        StartCoroutine(SetSprite(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1));
     }
 
     public IEnumerator SetSprite(String url)
@@ -59,9 +60,18 @@ public class HandCard : MonoBehaviour
         this.card_class = card_object.GetComponent<Card>();
     }
 
+    public void setPanel(GameObject panel)
+    {
+        this.panel = panel;
+    }
+
     public void OutPutHand()
     {
+
         card_class.Appear();
+        card_class.ChangeHavedFlag(false);
+        panel.SetActive(false);
         Destroy(this.gameObject);
+
     }
 }
