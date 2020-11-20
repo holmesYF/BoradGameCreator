@@ -40,13 +40,12 @@ public class ListResources : MonoBehaviour
 
     public void make_list()
     {
-        string[] names = get_folder_name(@"C:\Users\Koichiro Yufu\Desktop\もういっこ用\BoardGameData");
+        string[] names = get_folder_name(@"./BoardGameData");
         foreach (string name in names)
         {
             GameObject Obj = (GameObject)Instantiate(DataNode, this.transform.position, Quaternion.identity);
             Obj.transform.parent = Content.transform;
             Obj.transform.Find("FolderName").GetComponent<Text>().text = ControlString.CutText(name,'\\');
-
         }
     }
 }
