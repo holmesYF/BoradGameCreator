@@ -13,8 +13,10 @@ public class Board : IObject
     }
     private void Start()
     {
-        board.transform.position = new Vector3(data.size / 2  + 0.5f, -1f, data.size / 2 + 0.5f);
-        board.transform.localScale = new Vector3(data.size /transform.localScale.x, 0.5f,data.size / transform.localScale.z);
+        //board.transform.position = new Vector3(data.size / 2  + 0.5f, -1f, data.size / 2 + 0.5f);
+        //board.transform.localScale = new Vector3(data.size /transform.localScale.x, 0.5f,data.size / transform.localScale.z);
+        SetBoardSize(data.size);
+
         board.GetComponent<FileControl>().LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
     public override void LeftClick()
@@ -35,5 +37,10 @@ public class Board : IObject
     public override void NotHavedRightClick()
     {
         throw new System.NotImplementedException();
+    }
+    public void SetBoardSize(float size)
+    {
+        board.transform.position = new Vector3(size / 2 + 0.5f, -1f, size / 2 + 0.5f);
+        board.transform.localScale = new Vector3(size / transform.localScale.x, 0.5f, size / transform.localScale.z);
     }
 }
