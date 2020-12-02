@@ -14,7 +14,7 @@ public class Board : IObject
     private void Start()
     {
         board.transform.position = new Vector3(data.size / 2  + 0.5f, -1f, data.size / 2 + 0.5f);
-        board.transform.localScale = new Vector3(data.size / transform.localScale.x, 0.5f,data.size / transform.localScale.z);
+        board.transform.localScale = new Vector3(data.size /transform.localScale.x, 0.5f,data.size / transform.localScale.z);
         board.GetComponent<FileControl>().LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
     public override void LeftClick()

@@ -15,12 +15,16 @@ public class FileControl : MonoBehaviour
     public void LoadImage(string url)
     {
         StartCoroutine(GetTexture(url));
+
+        //GetTexture(url);
     }
 
     public IEnumerator GetTexture(String url)
     {
         Debug.Log(url);
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+
+
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
