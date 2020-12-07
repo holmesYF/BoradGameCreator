@@ -37,4 +37,11 @@ public class _Data
     //    this.imageURL2 = imageURL2;
     //    this.num = num;
     //}
+    public void SetData(Data data)
+    {
+        this.type = data.type;
+        this.imageURL1 = data.imageURL1;
+        this.imageURL2 = data.imageURL2;
+        this.num = data.num;
+    }
 }

@@ -23,12 +23,26 @@ public class ControlJson
     {
         do
         {
-            path = url + @"/" + IDnum.ToString() + @".json";
+            path = url + @"\" + IDnum.ToString() + @".json";
             IDnum += 1;
         }
         while (File.Exists(path));
         _OutPutJson(json, path);
     }
+    /// <summary>
+    /// 第一引数にjsonにしたいstringのリストを渡す
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="url"></param>
+    static public void ListOutPutJson(List<string> list,string url)
+    {
+        list.ForEach(json =>
+        {
+            OutPutJson(json,url);
+
+        });
+    }
+
     static private void _OutPutJson(string json, string path)
     {
         try
@@ -50,6 +64,7 @@ public class ControlJson
                     Console.WriteLine(s);
                 }
             }
+            Debug.Log("exports=>path:" + path);
         }
 
         catch (Exception ex)
@@ -57,6 +72,7 @@ public class ControlJson
             Console.WriteLine(ex.ToString());
         }
     }
+
 
 
 
