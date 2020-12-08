@@ -15,7 +15,7 @@ public class EditManager : MonoBehaviour
     private GameObject nowGameObject;
     private FileControl nowGameObjectFileControl;
     [SerializeField] private GameObject BoardCountergameObject;
-    private Counter boardcounter;
+    private Counter boardSizeCounter;
     //private GameObject ScrollView;
     [SerializeField] private GameObject ScrollViewContent;
     [SerializeField] private GameObject ContentPanel_prefab;
@@ -27,7 +27,7 @@ public class EditManager : MonoBehaviour
     void Start()
     {
         counter = countergameObject.GetComponent<Counter>();
-        boardcounter = BoardCountergameObject.GetComponent<Counter>();
+        boardSizeCounter = BoardCountergameObject.GetComponent<Counter>();
         BoardCountergameObject.SetActive(false);
         Debug.Log(piece);
         piece.SetActive(true);
@@ -48,13 +48,6 @@ public class EditManager : MonoBehaviour
     public void getImageURL1()
     {
         ImageURL1 = OpenFileName.ShowDialog();
-        //fileControls.ForEach(fileControl =>
-        //{
-        //    if (ImageURL != null)
-        //    {
-        //        fileControl.LoadImage(ImageURL);
-        //    }
-        //});
         nowGameObjectFileControl.LoadImage(ImageURL1);
     }
     public void getImageURL2()
@@ -102,8 +95,8 @@ public class EditManager : MonoBehaviour
 
     public void ChangeBoradSize()
     {
-        board.GetComponent<Board>().SetBoardSize(boardcounter.getValue());
-        board.GetComponent<Transform>().position = new Vector3(-18.0f - boardcounter.getValue(), -2.92f, -15 + boardcounter.getValue() / 2);
+        board.GetComponent<Board>().SetBoardSize(boardSizeCounter.getValue());
+        board.GetComponent<Transform>().position = new Vector3(-18.0f - boardSizeCounter.getValue(), -2.92f, -15 + boardSizeCounter.getValue() / 2);
     }
 
     public void DoneButton()
@@ -120,7 +113,7 @@ public class EditManager : MonoBehaviour
         }
         if (data.type == "board")
         {
-            data.size = (int)boardcounter.getValue();
+            data.size = (int)boardSizeCounter.getValue();
         }
     }
 
