@@ -26,5 +26,10 @@ public class Load : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void Load_edit()
+    {
+        SceneManager.LoadScene("Editor");
+    }
+
 
 }

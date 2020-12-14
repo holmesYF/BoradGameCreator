@@ -9,4 +9,9 @@ public class Content : MonoBehaviour
     {
         LoadManager.GetComponent<Load>().Load_room();
     }
+    
+    public void set_loadmanagerLoad(Load load)
+    {
+
+    }
 }

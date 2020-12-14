@@ -16,7 +16,7 @@ public class ListResources : MonoBehaviour
     public GameObject DataNode;//= GameObject.Find("DataNode");
     GameObject Obj;
     public GameObject Text;
-
+    public GameObject LoadObject;
 
     public static string[] get_folder_name(string folder)
     {
@@ -40,7 +40,11 @@ public class ListResources : MonoBehaviour
 
     public void make_list()
     {
+#if UNITY_EDITOR
+        string[] names = get_folder_name(@"C:\Users\holme\Desktop\BoradGameData");
+#else
         string[] names = get_folder_name(@"./BoardGameData");
+#endif
         foreach (string name in names)
         {
             GameObject Obj = (GameObject)Instantiate(DataNode, this.transform.position, Quaternion.identity);

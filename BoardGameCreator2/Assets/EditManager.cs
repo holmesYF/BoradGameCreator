@@ -128,7 +128,7 @@ public class EditManager : MonoBehaviour
 #if UNITY_EDITOR
         ControlJson.ListOutPutJson(list, @"C:\Users\holme\Desktop\もいっこ用\BoradGameData");
 #else
-        ControlJson.ListOutPutJson(list,AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
+        ControlJson.ListOutPutJson(list,AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\BoradGameData");
 #endif
         Debug.Log(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
     }

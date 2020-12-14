@@ -39,7 +39,6 @@ public class ControlJson
         list.ForEach(json =>
         {
             OutPutJson(json,url);
-
         });
     }
 

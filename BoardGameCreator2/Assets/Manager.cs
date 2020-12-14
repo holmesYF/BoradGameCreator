@@ -48,7 +48,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
 #if UNITY_EDITOR
         datas = ControlJson.LoadJson(@"C:\Users\Koichiro Yufu\Desktop\もういっこ用\BoardGameData\"  + Load.FOLDER_NAME );
 #else
-        datas = ControlJson.LoadJson(@"./BoardGameData\" + Fol);
+        datas = ControlJson.LoadJson(@"./BoardGameData\" + Load.FOLDER_NAME);
 #endif
         foreach (string item in datas)
         {
