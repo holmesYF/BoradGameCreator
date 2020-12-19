@@ -2,6 +2,7 @@
 using Photon.Realtime;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Manager : MonoBehaviourPunCallbacks,IHandOver
@@ -16,7 +17,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     private void Awake()
     {
 #if UNITY_EDITOR
-        ExeURL = @"C:\Users\Koichiro Yufu\Desktop\もういっこ用\";
+        ExeURL = @"C:\Users\holme\Desktop\もいっこ用";
 #else
         ExeURL = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\');
 #endif
@@ -46,9 +47,9 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     {
         //GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(0, 0, 0), Quaternion.identity);
 #if UNITY_EDITOR
-        datas = ControlJson.LoadJson(@"C:\Users\Koichiro Yufu\Desktop\もういっこ用\BoardGameData\"  + Load.FOLDER_NAME );
+        datas = ControlJson.LoadJson(@"C:\Users\holme\Desktop\もいっこ用\BoardGameData\" + Load.FOLDER_NAME );
 #else
-        datas = ControlJson.LoadJson(@"./BoardGameData\" + Load.FOLDER_NAME);
+        datas = ControlJson.LoadJson(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'),"BoardGameData",Load.FOLDER_NAME));
 #endif
         foreach (string item in datas)
         {
@@ -98,7 +99,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                     }
                     else
                     {
-                        Debug.LogError("No object type defined");
+                        Debug.LogError("No object type defined\n=>" + temp_data.type) ;
                     }
                 }
             }

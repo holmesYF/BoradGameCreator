@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class DataNodeButton : MonoBehaviour
 {
-    public GameObject parent;
+    private GameObject parent;
     public GameObject folder_name;
 
     private void Start()
     {
-        parent = transform.parent.gameObject.transform.parent.gameObject;
+        parent = transform.parent.gameObject;
     }
 
     public void OnClick()

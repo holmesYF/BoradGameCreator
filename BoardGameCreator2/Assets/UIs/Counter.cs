@@ -13,12 +13,6 @@ public class Counter : MonoBehaviour
         inputfield.text = "0";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CountUp()
     {
         float count = getValue();
@@ -39,7 +33,6 @@ public class Counter : MonoBehaviour
         try
         {
             float value = float.Parse(inputfield.text);
-            Debug.Log("try");
             return value;
         }
         catch
@@ -54,7 +47,6 @@ public class Counter : MonoBehaviour
         try
         {
             float value = float.Parse(inputfield.text);
-            Debug.Log("try");
         }
         catch
         {

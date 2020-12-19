@@ -4,13 +4,16 @@ ScriptsOnlyBuild:
     - Board
     - CameraController
     - Card
+    - Content
     - Counter
     - Data
+    - DataNodeButton
     - EditManager
     - FileControl
     - Hand
     - HandCard
     - Info
+    - ListResources
     - Load
     - Manager
     - MyHandButton
@@ -216,9 +219,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11822}
     - Class: 114
-      Script: {instanceID: 21182}
+      Script: {instanceID: 18898}
     - Class: 114
-      Script: {instanceID: 21184}
+      Script: {instanceID: 18900}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -287,7 +290,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9892}
     - Class: 114
+      Script: {instanceID: 9894}
+    - Class: 114
       Script: {instanceID: 9936}
+    - Class: 114
+      Script: {instanceID: 10046}
     - Class: 114
       Script: {instanceID: 10072}
     - Class: 114
@@ -295,13 +302,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10266}
     - Class: 114
+      Script: {instanceID: 10290}
+    - Class: 114
       Script: {instanceID: 10318}
     - Class: 114
       Script: {instanceID: 10396}
     - Class: 114
+      Script: {instanceID: 10436}
+    - Class: 114
       Script: {instanceID: 10462}
     - Class: 114
       Script: {instanceID: 10518}
+    - Class: 114
+      Script: {instanceID: 10596}
     - Class: 114
       Script: {instanceID: 10648}
     - Class: 114
@@ -311,11 +324,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10882}
     - Class: 114
+      Script: {instanceID: 10942}
+    - Class: 114
       Script: {instanceID: 10954}
+    - Class: 114
+      Script: {instanceID: 11016}
     - Class: 114
       Script: {instanceID: 11034}
     - Class: 114
       Script: {instanceID: 11042}
+    - Class: 114
+      Script: {instanceID: 11056}
     - Class: 114
       Script: {instanceID: 11242}
     - Class: 114
@@ -331,6 +350,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11438}
     - Class: 114
+      Script: {instanceID: 11580}
+    - Class: 114
       Script: {instanceID: 11740}
     - Class: 114
       Script: {instanceID: 11744}
@@ -343,7 +364,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11864}
     - Class: 114
-      Script: {instanceID: 20948}
+      Script: {instanceID: 18664}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -453,7 +474,7 @@ ScriptsOnlyBuild:
     className: GraphicToggleIsOnTransition
   - hash:
       serializedVersion: 2
-      Hash: 0f543c7f4d8dcde770148d2e625564a6
+      Hash: 1a241402529fac9d93724d0b55e59109
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EditManager
@@ -873,7 +894,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 6e7523f41c2ba3b977ab59d1d458a1de
+      Hash: fa0fdf284a121132e0def2a6fa536a47
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DataNodeButton
@@ -1515,7 +1536,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: b8e3abc66c325e150e07a61878fe7146
+      Hash: 007aed90a87667d63dda50d325e13ed4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ListResources
@@ -1788,4 +1809,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Load.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Editor.unity
-  playerPath: C:/Users/holme/Desktop/BoardGameCreator2.exe
+  playerPath: "C:/Users/holme/Desktop/\u30D3\u30EB\u30C9/BoardGameCreator2.exe"

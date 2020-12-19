@@ -1,11 +1,15 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EditManager : MonoBehaviour
 {
+
+
     [SerializeField] private GameObject countergameObject;
     private Counter counter;
     public GameObject piece;//=piece_prefab
@@ -22,7 +26,14 @@ public class EditManager : MonoBehaviour
     // private List<FileControl> fileControls = new List<FileControl>();
     private string ImageURL1;
     private string ImageURL2;
+    [SerializeField] private GameObject PieceSurfaceChangeButton;//=PieceSurfaceChangeButton
+    [SerializeField] private GameObject gamenameObject;//=Gamename
+    private InputField gamename;
     [SerializeField] private GameObject ImageURL2_Button;
+    private bool piece_surface=true;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +47,7 @@ public class EditManager : MonoBehaviour
         //fileControls.Add(board.transform.GetChild(0).gameObject.GetComponent<FileControl>());
         nowGameObject = piece;
         nowGameObjectFileControl = piece.GetComponent<FileControl>();
-
+        gamename = gamenameObject.GetComponent<InputField>();
     }
 
     // Update is called once per frame
@@ -65,6 +76,7 @@ public class EditManager : MonoBehaviour
             nowGameObject = piece;
             BoardCountergameObject.SetActive(false);
             ImageURL2_Button.SetActive(true);
+            PieceSurfaceChangeButton.SetActive(true);
             nowObjectClass = piece.GetComponent<Piece>();
             nowGameObjectFileControl = piece.GetComponent<FileControl>();
         }
@@ -72,6 +84,7 @@ public class EditManager : MonoBehaviour
         {
             BoardCountergameObject.SetActive(false);
             ImageURL2_Button.SetActive(false);
+            PieceSurfaceChangeButton.SetActive(false);
             nowGameObject = card;
             nowObjectClass = piece.GetComponent<Card>();
             nowGameObjectFileControl = card.GetComponent<FileControl>();
@@ -80,6 +93,7 @@ public class EditManager : MonoBehaviour
         {
             BoardCountergameObject.SetActive(true);
             ImageURL2_Button.SetActive(false);
+            PieceSurfaceChangeButton.SetActive(false);
             nowGameObject = board;
             nowObjectClass = piece.GetComponent<Board>();
             nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<FileControl>();
@@ -88,7 +102,6 @@ public class EditManager : MonoBehaviour
         {
 
         }
-
         nowGameObject.SetActive(true);
         nowGameObjectFileControl.LoadImage(ImageURL1);
     }
@@ -119,17 +132,41 @@ public class EditManager : MonoBehaviour
 
     public void ExportButton()
     {
-        List<string> list = new List<string>();
-        for (int i = 0; i < ScrollViewContent.transform.childCount; i++)
-        {
-            Debug.Log(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
-            list.Add(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
-        }
+        String path;
+        String gamenamestring = gamename.text;
 #if UNITY_EDITOR
-        ControlJson.ListOutPutJson(list, @"C:\Users\holme\Desktop\もいっこ用\BoradGameData");
+        path = @"C:\Users\holme\Desktop\もいっこ用\BoradGameData\" + gamenamestring;
 #else
-        ControlJson.ListOutPutJson(list,AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\BoradGameData");
+        path = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\BoardGameData\" + gamenamestring;
 #endif
+        if (!Directory.Exists(path))
+        {
+            List<string> list = new List<string>();
+            for (int i = 0; i < ScrollViewContent.transform.childCount; i++)
+            {
+                Debug.Log(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
+                list.Add(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
+            }
+            Directory.CreateDirectory(path);
+            ControlJson.ListOutPutJson(list, path);
+        }
+        else
+        {
+
+        }
         Debug.Log(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
+        SceneManager.LoadScene("Load");
+    }
+
+    public void ChangePieceSurfaceButton()
+    {
+        if (piece_surface)
+        {
+            
+        }
+        else
+        {
+
+        }
     }
 }

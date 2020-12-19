@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class Load : MonoBehaviour
 {
     public GameObject text_field;
-    private Text text;
+    private InputField text;
     public static string loadURL;
     public static string ROOM_NAME;
     public static string FOLDER_NAME;
     private void Awake()
     {
-        text = text_field.GetComponent<Text>();
+        text = text_field.GetComponent<InputField>();
     }
     public void OnClickLoadRoom()
     {

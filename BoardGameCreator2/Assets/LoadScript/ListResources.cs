@@ -41,15 +41,18 @@ public class ListResources : MonoBehaviour
     public void make_list()
     {
 #if UNITY_EDITOR
-        string[] names = get_folder_name(@"C:\Users\holme\Desktop\BoradGameData");
+        string[] names = get_folder_name(@"C:\Users\holme\Desktop\もいっこ用\BoardGameData");
 #else
-        string[] names = get_folder_name(@"./BoardGameData");
+        Debug.LogError("adafsfwef");
+        string[] names = get_folder_name(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'),"BoardGameData"));
 #endif
+        Debug.LogError(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'), "BoardGameData"));
         foreach (string name in names)
         {
             GameObject Obj = (GameObject)Instantiate(DataNode, this.transform.position, Quaternion.identity);
             Obj.transform.parent = Content.transform;
             Obj.transform.Find("FolderName").GetComponent<Text>().text = ControlString.CutText(name,'\\');
+            Obj.GetComponent<Content>().LoadManager = this.gameObject;
         }
     }
 }

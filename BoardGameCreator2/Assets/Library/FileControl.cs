@@ -30,7 +30,7 @@ public class FileControl : MonoBehaviour
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log("ここは->" + AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
-
+            Debug.LogError("UnityWebRequesT ERROR =>" + url) ;
             Debug.Log(www.error);
         }
         else

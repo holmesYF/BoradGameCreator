@@ -66,9 +66,9 @@ public class ControlJson
             Debug.Log("exports=>path:" + path);
         }
 
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine(e.ToString());
         }
     }
 
@@ -77,6 +77,7 @@ public class ControlJson
 
     static public List<string> LoadJson(string path)
     {
+        Debug.Log(Directory.Exists(path).ToString());
         string[] JsonsPath = Directory.GetFiles(path, "*");
         string json;
         List<string> datas = new List<string>();
