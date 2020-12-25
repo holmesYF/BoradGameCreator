@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviourPunCallbacks,IHandOver
 {
@@ -27,19 +28,24 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     private void Start()
     {
         // PhotonServerSettingsに設定した内容を使ってマスターサーバーへ接続する
-        PhotonNetwork.ConnectUsingSettings();
-    }
-
-    // マスターサーバーへの接続が成功した時に呼ばれるコールバック
-    public override void OnConnectedToMaster()
-    {
-        // room_nameの値の名前のルームに参加する（ルームが無ければ作成してから参加する）
-        if(Load.ROOM_NAME == null)
+        //PhotonNetwork.ConnectUsingSettings();
+        if (Load.ROOM_NAME == null)
         {
             Load.ROOM_NAME = "room";
         }
         PhotonNetwork.JoinOrCreateRoom(Load.ROOM_NAME, new RoomOptions(), TypedLobby.Default);
     }
+
+    // マスターサーバーへの接続が成功した時に呼ばれるコールバック
+    //public override void OnConnectedToMaster()
+    //{
+    //    // room_nameの値の名前のルームに参加する（ルームが無ければ作成してから参加する）
+    //    if(Load.ROOM_NAME == null)
+    //    {
+    //        Load.ROOM_NAME = "room";
+    //    }
+    //    PhotonNetwork.JoinOrCreateRoom(Load.ROOM_NAME, new RoomOptions(), TypedLobby.Default);
+    //}
 
     // マッチングが成功した時に呼ばれるコールバック
 
@@ -58,6 +64,13 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
         GameObject obj_player = PhotonNetwork.Instantiate("player_ graphic",main_camera.transform.position,Quaternion.identity);
         main_camera.transform.parent = obj_player.transform;
         obj_player.AddComponent<CameraController>();
+    }
+
+    //ルームから退出する
+    public void Leaveroom()
+    {
+        PhotonNetwork.LeaveRoom(false);
+        SceneManager.LoadScene("Load");
     }
 
     //インスタンス生成

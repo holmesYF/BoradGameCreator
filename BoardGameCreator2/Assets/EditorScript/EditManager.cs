@@ -30,7 +30,7 @@ public class EditManager : MonoBehaviour
     [SerializeField] private GameObject gamenameObject;//=Gamename
     private InputField gamename;
     [SerializeField] private GameObject ImageURL2_Button;
-    private bool piece_surface=true;
+    private bool piece_surface = true;
 
 
 
@@ -119,15 +119,19 @@ public class EditManager : MonoBehaviour
         Data data = obj.AddComponent<Data>();
         data.type = Type_dropdown.captionText.text;
         data.num = (int)counter.getValue();
-        data.imageURL1 = ControlString.CutText(ImageURL1, '\\');
+        data.imageURL1 = ControlString.CutTextAfter(ImageURL1, '\\');
+        obj.GetComponent<ImageName>().ImageURL1 = ImageURL1;
         if (data.type == "piece")
         {
-            data.imageURL2 = ControlString.CutText(ImageURL2, '\\');
+            data.imageURL2 = ControlString.CutTextAfter(ImageURL2, '\\');
+            obj.GetComponent<ImageName>().ImageURL2 = ImageURL2;
         }
         if (data.type == "board")
         {
             data.size = (int)boardSizeCounter.getValue();
         }
+        obj.GetComponent<GameobjectPanel>().SetManager(this);
+        obj.GetComponent<GameobjectPanel>().SetName(data);
     }
 
     public void ExportButton()
@@ -142,17 +146,20 @@ public class EditManager : MonoBehaviour
         if (!Directory.Exists(path))
         {
             List<string> list = new List<string>();
+            Directory.CreateDirectory(path);
             for (int i = 0; i < ScrollViewContent.transform.childCount; i++)
             {
                 Debug.Log(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
-                list.Add(JsonUtility.ToJson(ScrollViewContent.transform.GetChild(i).gameObject.GetComponent<Data>()));
+                GameObject ContentChild;
+                ContentChild = ScrollViewContent.transform.GetChild(i).gameObject;
+                ContentChild.GetComponent<ImageName>().MoveImage(path);
+                list.Add(JsonUtility.ToJson(ContentChild.GetComponent<Data>()));
             }
-            Directory.CreateDirectory(path);
             ControlJson.ListOutPutJson(list, path);
         }
         else
         {
-
+            return;
         }
         Debug.Log(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
         SceneManager.LoadScene("Load");
@@ -162,11 +169,40 @@ public class EditManager : MonoBehaviour
     {
         if (piece_surface)
         {
-            
+
         }
         else
         {
 
         }
+    }
+
+    public void EditButton(Data data, ImageName imageName, GameObject gameObject)
+    {
+        ImageURL1 = imageName.ImageURL1;
+        ImageURL2 = imageName.ImageURL2;
+        counter.setValue(data.num);
+        boardSizeCounter.setValue(data.size);
+        switch (data.type)
+        {
+            case "piece":
+                Type_dropdown.value = 0;
+                break;
+            case "card":
+                Type_dropdown.value = 1;
+                break;
+            case "board":
+                Type_dropdown.value = 2;
+                break;
+
+        }
+        Destroy(gameObject);
+    }
+
+    public void testButton()
+    {
+        File.Copy(@"C:\Users\holme\Desktop\ビルド\BoardGameData\オセロ\gleen.png", @"C:\Users\holme\Desktop\test\b.png");
+        Debug.Log("Test");
+
     }
 }

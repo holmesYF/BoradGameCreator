@@ -51,7 +51,7 @@ public class ListResources : MonoBehaviour
         {
             GameObject Obj = (GameObject)Instantiate(DataNode, this.transform.position, Quaternion.identity);
             Obj.transform.parent = Content.transform;
-            Obj.transform.Find("FolderName").GetComponent<Text>().text = ControlString.CutText(name,'\\');
+            Obj.transform.Find("FolderName").GetComponent<Text>().text = ControlString.CutTextAfter(name,'\\');
             Obj.GetComponent<Content>().LoadManager = this.gameObject;
         }
     }

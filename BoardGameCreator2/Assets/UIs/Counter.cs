@@ -53,4 +53,16 @@ public class Counter : MonoBehaviour
             inputfield.text = "0";
         }
     }
+
+    public void setValue(float value)
+    {
+        try
+        {
+            inputfield.text = ((int)value).ToString();
+        }
+        catch
+        {
+            inputfield.text = "0";
+        }
+    }
 }

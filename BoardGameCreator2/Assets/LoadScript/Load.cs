@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,11 @@ public class Load : MonoBehaviour
     private void Awake()
     {
         text = text_field.GetComponent<InputField>();
+    }
+
+    private void Start()
+    {
+        PhotonNetwork.ConnectUsingSettings();
     }
     public void OnClickLoadRoom()
     {

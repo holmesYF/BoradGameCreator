@@ -69,7 +69,9 @@
     <Compile Include="Assets\ControlJson.cs" />
     <Compile Include="Assets\ControlString.cs" />
     <Compile Include="Assets\Data.cs" />
-    <Compile Include="Assets\EditManager.cs" />
+    <Compile Include="Assets\EditorScript\EditManager.cs" />
+    <Compile Include="Assets\EditorScript\GameobjectPanel.cs" />
+    <Compile Include="Assets\EditorScript\ImageName.cs" />
     <Compile Include="Assets\Folder_data.cs" />
     <Compile Include="Assets\HandCard.cs" />
     <Compile Include="Assets\IHandOver.cs" />

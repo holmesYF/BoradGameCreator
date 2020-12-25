@@ -108,7 +108,7 @@ public class Hand : MonoBehaviour
                             iobj = GetIObject(rayhitobject);
                             if (!iobj.havedFlag)
                             {
-                                iobj.ChangeHavedFlag(true);
+                                //iobj.ChangeHavedFlag(true);
                                 if (this.rayhitobject.GetComponent<PhotonView>().IsMine)
                                 {
                                     iobj.NotHavedRightClick();
@@ -247,12 +247,10 @@ public class Hand : MonoBehaviour
         {
             iobj = obj.GetComponent<Piece>();
         }
-        //bool flag8 = this.havedObject.GetComponent<Card>() != null;
         else if (obj.GetComponent<Card>() != null)
         {
             iobj = obj.GetComponent<Card>();
         }
-        //bool flag9 = this.havedObject.GetComponent<Deck>() != null;
         else if (obj.GetComponent<Deck>() != null)
         {
             iobj = obj.GetComponent<Deck>();

@@ -11,6 +11,17 @@ public class Card : IObject
     public IHandOver manager_handover;
 
 
+    public override void MouseScrollWheel(bool direction)
+    {
+        if (direction)
+        {
+            transform.Rotate(new Vector3(0, 0, 90));
+        }
+        else
+        {
+            transform.Rotate(new Vector3(0, 0, -90));
+        }
+    }
 
     public override void Awake()
     {

@@ -21,23 +21,26 @@ public class FileControl : MonoBehaviour
 
     public IEnumerator GetTexture(String url)
     {
-        Debug.Log(url);
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-
-
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
+        if (ControlString.CutTextAfter(url,'\\') != null)
         {
-            Debug.Log("ここは->" + AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
-            Debug.LogError("UnityWebRequesT ERROR =>" + url) ;
-            Debug.Log(www.error);
-        }
-        else
-        {
-            Texture myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;   
-            this.gameObject.GetComponent<Renderer>().material.SetTexture("_MainTex", myTexture);
-            Debug.Log("Collect Attach image");
+            Debug.Log(url);
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+
+
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log("ここは->" + AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'));
+                Debug.LogError("UnityWebRequesT ERROR =>" + url);
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Texture myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+                this.gameObject.GetComponent<Renderer>().material.SetTexture("_MainTex", myTexture);
+                Debug.Log("Collect Attach image");
+            }
         }
     }
 
