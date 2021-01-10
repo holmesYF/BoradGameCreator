@@ -1,43 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 // Token: 0x02000008 RID: 8
 public class Deck : IObject
 {
-    // Token: 0x06000021 RID: 33 RVA: 0x00002439 File Offset: 0x00000639
+    private List<GameObject> card_list = new List<GameObject>();
+
     public override void HavedRightClick()
     {
+
     }
 
-    // Token: 0x06000022 RID: 34 RVA: 0x00002439 File Offset: 0x00000639
+    public override void Awake()
+    {
+        base.Awake();
+        this.type = "deck";
+    }
+
+
     public override void LeftClick()
     {
+
     }
 
-    // Token: 0x06000023 RID: 35 RVA: 0x00002439 File Offset: 0x00000639
+
     public override void PopUpInfo()
     {
+
     }
 
-    // Token: 0x06000024 RID: 36 RVA: 0x0000246C File Offset: 0x0000066C
-    private Card RandPopCard()
+
+    private GameObject RandPopCard()
     {
         int pos = UnityEngine.Random.Range(0, this.card_list.Count);
-        Card card = this.card_list[pos];
+        GameObject card = this.card_list[pos];
         this.card_list.RemoveAt(pos);
         return card;
     }
 
     // Token: 0x06000025 RID: 37 RVA: 0x000024AB File Offset: 0x000006AB
-    private void AddCardByGameobject(GameObject obj)
+    public void AddCardByGameobject(GameObject obj)
     {
-        this.AddCard(obj.GetComponent<Card>());
-        Destroy(obj);
+        my_photonView.RPC("_AddCardByGameobject",RpcTarget.All, obj.GetComponent<PhotonView>().ViewID);
+        obj.GetComponent<Card>().HideObject();
     }
 
     // Token: 0x06000026 RID: 38 RVA: 0x000024C2 File Offset: 0x000006C2
-    private void AddCard(Card card)
+    private void AddCard(GameObject card)
     {
         this.card_list.Add(card);
     }
@@ -45,11 +56,19 @@ public class Deck : IObject
     // Token: 0x06000027 RID: 39 RVA: 0x00002439 File Offset: 0x00000639
     private void Start()
     {
+
     }
 
     // Token: 0x06000028 RID: 40 RVA: 0x00002439 File Offset: 0x00000639
     private void Update()
     {
+
+    }
+
+    [PunRPC]
+    private void _AddCardByGameobject(int viewID)
+    {
+        AddCard(PhotonView.Find(viewID).gameObject);
     }
 
     public override void NotHavedRightClick()
@@ -58,5 +77,4 @@ public class Deck : IObject
     }
 
     // Token: 0x0400000F RID: 15
-    private List<Card> card_list = new List<Card>();
 }

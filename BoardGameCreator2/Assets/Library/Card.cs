@@ -27,6 +27,7 @@ public class Card : IObject
     {
         base.Awake();
         this.f_controller = base.gameObject.GetComponent<FileControl>();
+        this.type = "card";
     }
     private void Start()
     {

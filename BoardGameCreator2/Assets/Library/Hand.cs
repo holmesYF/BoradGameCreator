@@ -20,7 +20,7 @@ public class Hand : MonoBehaviour
     }
     private void Update()
     {
-        if (! EventSystem.current.IsPointerOverGameObject())
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
             #region オブジェクト所持時フレーム処理用
             if (havedObject != null)
@@ -36,6 +36,29 @@ public class Hand : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     iobj.ChangeHavedFlag(false);
+                    if (iobj.type == "card")
+                    {
+                        this.rayhitobject = null;
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        RaycastHit hit = default(RaycastHit);
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            this.rayhitobject = hit.collider.gameObject;
+                        }
+                        if (this.rayhitobject != null)
+                        {
+
+                            if (this.rayhitobject.tag == "moveable" || this.rayhitobject.tag == "coin")
+                            {
+                                iobj = GetIObject(rayhitobject);
+                                if (iobj.type == "deck")
+                                {
+                                    rayhitobject.GetComponent<Deck>().AddCardByGameobject(havedObject);
+                                }
+                            }
+
+                        }
+                    }
                     this.havedObject = null;
                     this.HaveObjectPos = null;
                     this.photonview = null;
@@ -255,7 +278,7 @@ public class Hand : MonoBehaviour
         {
             iobj = obj.GetComponent<Deck>();
         }
-        else if(obj.GetComponent<Board>() != null)
+        else if (obj.GetComponent<Board>() != null)
         {
             iobj = obj.GetComponent<Board>();
         }

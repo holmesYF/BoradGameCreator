@@ -6,6 +6,7 @@ abstract public class IObject : MonoBehaviour
     public bool havedFlag = false;
     protected PhotonView my_photonView;
     protected Data data;
+    public string type = null;
 
     virtual public void Awake()
     {
@@ -14,7 +15,6 @@ abstract public class IObject : MonoBehaviour
     }
     abstract public void HavedRightClick();
     abstract public void NotHavedRightClick();
-
     abstract public void LeftClick();
     abstract public void PopUpInfo();
     virtual public void MouseScrollWheel(bool direction) {
