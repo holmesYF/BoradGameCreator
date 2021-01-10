@@ -43,10 +43,14 @@ public class Deck : IObject
     // Token: 0x06000025 RID: 37 RVA: 0x000024AB File Offset: 0x000006AB
     public void AddCardByGameobject(GameObject obj)
     {
-        my_photonView.RPC("_AddCardByGameobject",RpcTarget.All, obj.GetComponent<PhotonView>().ViewID);
-        obj.GetComponent<Card>().HideObject();
+        my_photonView.RPC("_AddCardByGameobject", RpcTarget.All, obj.GetComponent<PhotonView>().ViewID);
+        //obj.GetComponent<Card>().HideObject();
     }
 
+    public void Test()
+    {
+
+    }
     // Token: 0x06000026 RID: 38 RVA: 0x000024C2 File Offset: 0x000006C2
     private void AddCard(GameObject card)
     {
@@ -66,9 +70,11 @@ public class Deck : IObject
     }
 
     [PunRPC]
-    private void _AddCardByGameobject(int viewID)
+    public void _AddCardByGameobject(int viewID)
     {
-        AddCard(PhotonView.Find(viewID).gameObject);
+        GameObject card_object = PhotonView.Find(viewID).gameObject;
+        AddCard(card_object);
+        card_object.SetActive(false);
     }
 
     public override void NotHavedRightClick()

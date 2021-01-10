@@ -98,6 +98,15 @@ public class EditManager : MonoBehaviour
             nowObjectClass = piece.GetComponent<Board>();
             nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<FileControl>();
         }
+        else if (Type_dropdown.value == 3)
+        {
+            BoardCountergameObject.SetActive(true);
+            ImageURL2_Button.SetActive(false);
+            PieceSurfaceChangeButton.SetActive(false);
+            nowGameObject = board;
+            nowObjectClass = piece.GetComponent<Board>();
+            nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<FileControl>();
+        }
         else
         {
 
@@ -138,8 +147,9 @@ public class EditManager : MonoBehaviour
     {
         String path;
         String gamenamestring = gamename.text;
+        Debug.Log("ExportButton");
 #if UNITY_EDITOR
-        path = @"C:\Users\holme\Desktop\もいっこ用\BoradGameData\" + gamenamestring;
+        path = @"C:\Users\holme\Desktop\もいっこ用\BoardGameData\" + gamenamestring;
 #else
         path = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\BoardGameData\" + gamenamestring;
 #endif
@@ -194,7 +204,9 @@ public class EditManager : MonoBehaviour
             case "board":
                 Type_dropdown.value = 2;
                 break;
-
+            case "deck":
+                Type_dropdown.value = 3;
+                break;
         }
         Destroy(gameObject);
     }

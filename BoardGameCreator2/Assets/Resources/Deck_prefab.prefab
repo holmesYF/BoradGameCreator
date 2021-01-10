@@ -104,9 +104,13 @@ GameObject:
   - component: {fileID: 232806895430859477}
   - component: {fileID: 7481828816828423937}
   - component: {fileID: 8859466159663596625}
+  - component: {fileID: -8774189839084770307}
+  - component: {fileID: 383410245474821583}
+  - component: {fileID: 1430199223809170164}
+  - component: {fileID: -4031165560902546098}
   m_Layer: 0
   m_Name: Deck_prefab
-  m_TagString: Untagged
+  m_TagString: moveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,3 +189,69 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8774189839084770307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757571032227684222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d9e75b872ffca4994c02aaecc3244a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  havedFlag: 0
+  type: 
+--- !u!114 &383410245474821583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757571032227684222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1430199223809170164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757571032227684222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb19ef5f1c4280b40b11b5cac5802879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4031165560902546098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757571032227684222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff833fe32991f2440b6bf6ede2a4e3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 
+  fig_type: 
+  imageURL1: 
+  imageURL2: 
+  num: 0
+  size: 0

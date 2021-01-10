@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   havedFlag: 0
+  type: 
   texture: {fileID: 2800000, guid: a61607e5db297154193ff54410c5dff4, type: 3}
 --- !u!114 &7540904214962938472
 MonoBehaviour:

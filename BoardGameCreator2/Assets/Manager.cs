@@ -110,6 +110,12 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
                     }
+                    else if (temp_data.type == "deck")
+                    {
+                        GameObject obj = PhotonNetwork.Instantiate("Deck_prefab", new Vector3(0, -0.5f, 0), Quaternion.identity);
+                        obj.GetComponent<Data>().cloneData(data);
+                        obj.GetComponent<Data>().setexeURL(ExeURL);
+                    }
                     else
                     {
                         Debug.LogError("No object type defined\n=>" + temp_data.type) ;

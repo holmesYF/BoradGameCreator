@@ -30,7 +30,7 @@ public class Hand : MonoBehaviour
                 Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.pos.z);
                 Vector3 b = Camera.main.ScreenToWorldPoint(a);
                 this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
-                Debug.Log(this.HaveObjectPos.transform);
+                //Debug.Log(this.HaveObjectPos.transform);
 
                 //左クリック
                 if (Input.GetMouseButtonDown(0))
@@ -50,8 +50,8 @@ public class Hand : MonoBehaviour
 
                             if (this.rayhitobject.tag == "moveable" || this.rayhitobject.tag == "coin")
                             {
-                                iobj = GetIObject(rayhitobject);
-                                if (iobj.type == "deck")
+                                IObject iobj2 = GetIObject(rayhitobject);
+                                if (iobj2.type == "deck")
                                 {
                                     rayhitobject.GetComponent<Deck>().AddCardByGameobject(havedObject);
                                 }
@@ -282,6 +282,7 @@ public class Hand : MonoBehaviour
         {
             iobj = obj.GetComponent<Board>();
         }
+
         else
         {
             Debug.Log("Nothing IOobject");
