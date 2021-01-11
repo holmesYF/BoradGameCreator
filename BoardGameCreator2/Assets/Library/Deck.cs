@@ -7,6 +7,7 @@ using Photon.Pun;
 public class Deck : IObject
 {
     private List<GameObject> card_list = new List<GameObject>();
+    [SerializeField]private Hand hand;
 
     public override void HavedRightClick()
     {
@@ -32,12 +33,21 @@ public class Deck : IObject
     }
 
 
-    private GameObject RandPopCard()
+    private void RandPopCard()
     {
         int pos = UnityEngine.Random.Range(0, this.card_list.Count);
         GameObject card = this.card_list[pos];
+        hand.SetHandGameobject(card);
+        my_photonView.RPC("_RemoveCard", RpcTarget.All, pos);
+    }
+
+    [PunRPC]
+    public void _RemoveCard(int pos)
+    {
+        GameObject card = this.card_list[pos];
+        card.SetActive(true);
+        card.GetComponent<Card>().ChangeHavedFlag(true);
         this.card_list.RemoveAt(pos);
-        return card;
     }
 
     // Token: 0x06000025 RID: 37 RVA: 0x000024AB File Offset: 0x000006AB
@@ -79,7 +89,18 @@ public class Deck : IObject
 
     public override void NotHavedRightClick()
     {
-        throw new NotImplementedException();
+        RandPopCard();
+    }
+
+    public void SetHand()
+    {
+        my_photonView.RPC("_SetHand", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void _SetHand()
+    {
+        hand = GameObject.Find("Player_prefab").GetComponent<Hand>();
     }
 
     // Token: 0x0400000F RID: 15

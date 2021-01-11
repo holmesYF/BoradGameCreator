@@ -46,6 +46,10 @@ MonoBehaviour:
   - _HideObject
   - _Appear
   - _AddCardByGameobject
+  - _RemoveCard
+  - _SetManager_handover
+  - _SetHand
+  - _ChangeObjectTextuer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

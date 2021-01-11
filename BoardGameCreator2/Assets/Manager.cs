@@ -102,7 +102,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                         GameObject obj = PhotonNetwork.Instantiate("Card_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.Euler(90, 0, 0));
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
-                        obj.GetComponent<Card>().manager_handover = this;
+                        obj.GetComponent<Card>().SetManager_handover();
                     }
                     else if(temp_data.type == "board")
                     {
@@ -115,6 +115,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                         GameObject obj = PhotonNetwork.Instantiate("Deck_prefab", new Vector3(0, -0.5f, 0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Deck>().SetHand();
                     }
                     else
                     {

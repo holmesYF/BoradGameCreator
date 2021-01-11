@@ -46,7 +46,7 @@ public class ListResources : MonoBehaviour
         Debug.LogError("adafsfwef");
         string[] names = get_folder_name(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'),"BoardGameData"));
 #endif
-        Debug.LogError(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'), "BoardGameData"));
+        //Debug.LogError(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'), "BoardGameData"));
         foreach (string name in names)
         {
             GameObject Obj = (GameObject)Instantiate(DataNode, this.transform.position, Quaternion.identity);

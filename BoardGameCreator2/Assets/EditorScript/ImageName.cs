@@ -9,11 +9,12 @@ public class ImageName : MonoBehaviour
     public string ImageURL2 = null;
     public void MoveImage(string path)
     {
-        if (ImageURL1 != ""&& ImageURL1 != null)
+        Debug.LogError(Path.Combine(path, ControlString.CutTextAfter(ImageURL1, '\\')));
+        if (ImageURL1 != ""&& ImageURL1 != null && !File.Exists(Path.Combine(path, ControlString.CutTextAfter(ImageURL1, '\\'))))
         {
             File.Copy(ImageURL1, Path.Combine(path, ControlString.CutTextAfter(ImageURL1, '\\')));
         }
-        if (ImageURL2 != "" && ImageURL2 != null)
+        if (ImageURL2 != "" && ImageURL2 != null && !File.Exists(Path.Combine(path, ControlString.CutTextAfter(ImageURL2, '\\'))))
         {
             File.Copy(ImageURL2, Path.Combine(path, ControlString.CutTextAfter(ImageURL2, '\\')));
         }

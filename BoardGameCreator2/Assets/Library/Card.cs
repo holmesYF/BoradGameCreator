@@ -108,4 +108,14 @@ public class Card : IObject
         HideObject();
         manager_handover.AddHand(this.gameObject);
     }
+    public void SetManager_handover()
+    {
+        my_photonView.RPC("_SetManager_handover", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void _SetManager_handover()
+    {
+        manager_handover =  GameObject.Find("GameManager").GetComponent<Manager>();
+    }
 }

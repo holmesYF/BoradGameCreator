@@ -115,7 +115,7 @@ public class EditManager : MonoBehaviour
         nowGameObjectFileControl.LoadImage(ImageURL1);
     }
 
-    public void ChangeBoradSize()
+    public void ChangeBoardSize()
     {
         board.GetComponent<Board>().SetBoardSize(boardSizeCounter.getValue());
         board.GetComponent<Transform>().position = new Vector3(-18.0f - boardSizeCounter.getValue(), -2.92f, -15 + boardSizeCounter.getValue() / 2);

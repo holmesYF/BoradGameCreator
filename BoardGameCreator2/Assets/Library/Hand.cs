@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Hand : MonoBehaviour
 {
     private GameObject rayhitobject;
-    private GameObject havedObject;
+    [SerializeField]private GameObject havedObject;
     private Transform HaveObjectPos;
     private IObject iobj;
     private PhotonView photonview;
@@ -104,24 +104,7 @@ public class Hand : MonoBehaviour
                     {
                         if (this.rayhitobject.tag == "moveable" || this.rayhitobject.tag == "coin")
                         {
-                            iobj = GetIObject(rayhitobject);
-                            if (!iobj.havedFlag)
-                            {
-                                iobj.ChangeHavedFlag(true);
-                                if (true || this.rayhitobject.GetComponent<PhotonView>().IsMine)
-                                {
-                                    this.havedObject = this.rayhitobject;
-                                    this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
-                                    this.photonview = this.havedObject.GetComponent<PhotonView>();
-                                }
-                                else
-                                {
-                                    this.rayhitobject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
-                                    this.havedObject = this.rayhitobject;
-                                    this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
-                                    this.photonview = this.havedObject.GetComponent<PhotonView>();
-                                }
-                            }
+                            SetHandGameobject(this.rayhitobject);
                         }
                     }
                     else if (Input.GetMouseButtonDown(1))
@@ -297,5 +280,27 @@ public class Hand : MonoBehaviour
     public void Start()
     {
         this.test();
+    }
+
+    public void SetHandGameobject(GameObject obj)
+    {
+        iobj = GetIObject(obj);
+        if (!iobj.havedFlag)
+        {
+            iobj.ChangeHavedFlag(true);
+            if (obj.GetComponent<PhotonView>().IsMine)
+            {
+                this.havedObject = obj;
+                this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+                this.photonview = this.havedObject.GetComponent<PhotonView>();
+            }
+            else
+            {
+                obj.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+                this.havedObject = obj;
+                this.HaveObjectPos = this.havedObject.GetComponent<Transform>();
+                this.photonview = this.havedObject.GetComponent<PhotonView>();
+            }
+        }
     }
 }
