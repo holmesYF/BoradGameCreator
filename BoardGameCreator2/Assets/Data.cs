@@ -53,9 +53,9 @@ public class Data : MonoBehaviour
     {
         my_photonView.RPC("_cloneData", RpcTarget.All, data);
     }
-    public void setexeURL(string url)
+    public void setexeURL()
     {
-        my_photonView.RPC("_setexeURL", RpcTarget.All, url);
+        my_photonView.RPC("_setexeURL", RpcTarget.All);
     }
 
     public string getexeURL()
@@ -68,8 +68,8 @@ public class Data : MonoBehaviour
         JsonUtility.FromJsonOverwrite(data, this);
     }
     [PunRPC]
-    public void _setexeURL(string url)
+    public void _setexeURL()
     {
-        this.exeURL = url;
+        this.exeURL = Manager.ExeURL;
     }
 }

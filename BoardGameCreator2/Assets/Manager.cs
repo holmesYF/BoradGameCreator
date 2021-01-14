@@ -14,7 +14,7 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     public GameObject HandButton;
     private Transform Content_transform;
     public GameObject panel;//=手札のパネル
-    public string ExeURL;
+    public static string ExeURL;
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -95,26 +95,26 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                     {
                         GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
-                        obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Data>().setexeURL();
                     }
                     else if(temp_data.type == "card")
                     {
                         GameObject obj = PhotonNetwork.Instantiate("Card_prefab", new Vector3(UnityEngine.Random.Range(0, 8), 0, UnityEngine.Random.Range(0, 8)), Quaternion.Euler(90, 0, 0));
                         obj.GetComponent<Data>().cloneData(data);
-                        obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Data>().setexeURL();
                         obj.GetComponent<Card>().SetManager_handover();
                     }
                     else if(temp_data.type == "board")
                     {
                         GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(0, -0.5f, 0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
-                        obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Data>().setexeURL();
                     }
                     else if (temp_data.type == "deck")
                     {
                         GameObject obj = PhotonNetwork.Instantiate("Deck_prefab", new Vector3(0, -0.5f, 0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
-                        obj.GetComponent<Data>().setexeURL(ExeURL);
+                        obj.GetComponent<Data>().setexeURL();
                         obj.GetComponent<Deck>().SetHand();
                     }
                     else
