@@ -1933,7 +1933,6 @@ MonoBehaviour:
   HandButton: {fileID: 8303571240602082325, guid: afdc4747424ef3648bb7adcccadf7c39,
     type: 3}
   panel: {fileID: 1051801262}
-  ExeURL: 
 --- !u!4 &2002884492
 Transform:
   m_ObjectHideFlags: 0
