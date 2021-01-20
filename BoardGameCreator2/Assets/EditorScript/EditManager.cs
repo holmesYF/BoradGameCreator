@@ -17,7 +17,7 @@ public class EditManager : MonoBehaviour
     public GameObject board;//=boardmover_prefab;
     public Dropdown Type_dropdown;
     private GameObject nowGameObject;
-    private FileControl nowGameObjectFileControl;
+    private ViewControl nowGameObjectFileControl;
     [SerializeField] private GameObject BoardCountergameObject;
     private Counter boardSizeCounter;
     //private GameObject ScrollView;
@@ -46,7 +46,7 @@ public class EditManager : MonoBehaviour
         //fileControls.Add(card.GetComponent<FileControl>());
         //fileControls.Add(board.transform.GetChild(0).gameObject.GetComponent<FileControl>());
         nowGameObject = piece;
-        nowGameObjectFileControl = piece.GetComponent<FileControl>();
+        nowGameObjectFileControl = piece.GetComponent<ViewControl>();
         gamename = gamenameObject.GetComponent<InputField>();
     }
 
@@ -78,7 +78,7 @@ public class EditManager : MonoBehaviour
             ImageURL2_Button.SetActive(true);
             PieceSurfaceChangeButton.SetActive(true);
             nowObjectClass = piece.GetComponent<Piece>();
-            nowGameObjectFileControl = piece.GetComponent<FileControl>();
+            nowGameObjectFileControl = piece.GetComponent<ViewControl>();
         }
         else if (Type_dropdown.value == 1)
         {
@@ -87,7 +87,7 @@ public class EditManager : MonoBehaviour
             PieceSurfaceChangeButton.SetActive(false);
             nowGameObject = card;
             nowObjectClass = piece.GetComponent<Card>();
-            nowGameObjectFileControl = card.GetComponent<FileControl>();
+            nowGameObjectFileControl = card.GetComponent<ViewControl>();
         }
         else if (Type_dropdown.value == 2)
         {
@@ -96,7 +96,7 @@ public class EditManager : MonoBehaviour
             PieceSurfaceChangeButton.SetActive(false);
             nowGameObject = board;
             nowObjectClass = piece.GetComponent<Board>();
-            nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<FileControl>();
+            nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<ViewControl>();
         }
         else if (Type_dropdown.value == 3)
         {
@@ -105,7 +105,7 @@ public class EditManager : MonoBehaviour
             PieceSurfaceChangeButton.SetActive(false);
             nowGameObject = board;
             nowObjectClass = piece.GetComponent<Board>();
-            nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<FileControl>();
+            nowGameObjectFileControl = board.transform.GetChild(0).gameObject.GetComponent<ViewControl>();
         }
         else
         {

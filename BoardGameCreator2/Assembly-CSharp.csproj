@@ -79,11 +79,11 @@
     <Compile Include="Assets\Library\Board.cs" />
     <Compile Include="Assets\Library\Card.cs" />
     <Compile Include="Assets\Library\Deck.cs" />
-    <Compile Include="Assets\Library\FileControl.cs" />
     <Compile Include="Assets\Library\Hand.cs" />
     <Compile Include="Assets\Library\IObject.cs" />
     <Compile Include="Assets\Library\OpenFileName.cs" />
     <Compile Include="Assets\Library\Piece.cs" />
+    <Compile Include="Assets\Library\ViewControl.cs" />
     <Compile Include="Assets\LoadScript\Content.cs" />
     <Compile Include="Assets\LoadScript\DataNodeButton.cs" />
     <Compile Include="Assets\LoadScript\ListResources.cs" />

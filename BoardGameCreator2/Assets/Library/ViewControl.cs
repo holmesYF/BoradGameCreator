@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.IO;
 
-public class FileControl : MonoBehaviour
+public class ViewControl : MonoBehaviour
 {
     public void LoadImageDialog()
     {

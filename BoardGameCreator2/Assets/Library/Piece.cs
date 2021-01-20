@@ -6,13 +6,13 @@ using UnityEngine;
 public class Piece : IObject
 { 
     //private PhotonView my_photonView;  親クラスに実装
-    private FileControl f_controller;
+    private ViewControl f_controller;
     private bool saface = true;
 
     public override void Awake()
     {
         base.Awake();
-        this.f_controller = base.gameObject.GetComponent<FileControl>();
+        this.f_controller = base.gameObject.GetComponent<ViewControl>();
     }
 
     private void Start()

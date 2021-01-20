@@ -10,7 +10,6 @@ ScriptsOnlyBuild:
     - DataNodeButton
     - Deck
     - EditManager
-    - FileControl
     - GameobjectPanel
     - Hand
     - HandCard
@@ -21,6 +20,7 @@ ScriptsOnlyBuild:
     - Manager
     - MyHandButton
     - Piece
+    - ViewControl
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -31,6 +31,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonHandler
@@ -229,9 +231,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 14344}
+      Script: {instanceID: 14338}
     - Class: 114
-      Script: {instanceID: 14346}
+      Script: {instanceID: 14340}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,7 +378,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 14364}
+      Script: {instanceID: 14358}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1392,7 +1394,7 @@ ScriptsOnlyBuild:
     className: Asteroid
   - hash:
       serializedVersion: 2
-      Hash: e491f3ade1f68e261e419127c16de724
+      Hash: 2673d9a60e7ed485ee582ac1871407fa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -1749,7 +1751,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: FileControl
+    className: ViewControl
   - hash:
       serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24

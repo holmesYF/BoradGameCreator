@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Card : IObject
 {
     public Texture texture;
-    private FileControl f_controller;
+    private ViewControl f_controller;
     private bool saface = true;
     public IHandOver manager_handover;
 
@@ -26,7 +26,7 @@ public class Card : IObject
     public override void Awake()
     {
         base.Awake();
-        this.f_controller = base.gameObject.GetComponent<FileControl>();
+        this.f_controller = base.gameObject.GetComponent<ViewControl>();
         this.type = "card";
     }
     private void Start()

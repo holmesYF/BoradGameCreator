@@ -106,13 +106,13 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
                     }
                     else if(temp_data.type == "board")
                     {
-                        GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(0, -0.5f, 0), Quaternion.identity);
+                        GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(0, 0, 0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL();
                     }
                     else if (temp_data.type == "deck")
                     {
-                        GameObject obj = PhotonNetwork.Instantiate("Deck_prefab", new Vector3(0, -0.5f, 0), Quaternion.identity);
+                        GameObject obj = PhotonNetwork.Instantiate("Deck_prefab", new Vector3(0, 0f, 0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL();
                         obj.GetComponent<Deck>().SetHand();

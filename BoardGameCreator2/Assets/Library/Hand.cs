@@ -29,7 +29,7 @@ public class Hand : MonoBehaviour
                 this.pos = Camera.main.WorldToScreenPoint(this.HaveObjectPos.transform.position);
                 Vector3 a = new Vector3(Input.mousePosition.x, Input.mousePosition.y, this.pos.z);
                 Vector3 b = Camera.main.ScreenToWorldPoint(a);
-                this.HaveObjectPos.position = new Vector3(b.x, 0.1f, b.z);
+                this.HaveObjectPos.position = new Vector3(b.x, 0f, b.z);
                 //Debug.Log(this.HaveObjectPos.transform);
 
                 //左クリック

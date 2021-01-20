@@ -1374,7 +1374,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: card
       m_Image: {fileID: 0}
-    - m_Text: borad
+    - m_Text: board
       m_Image: {fileID: 0}
     - m_Text: deck
       m_Image: {fileID: 0}

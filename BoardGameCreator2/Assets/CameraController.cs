@@ -73,6 +73,18 @@ public class CameraController : MonoBehaviour
             transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * angle_speed_y,0.0f));
             ang = transform.eulerAngles;
             transform.eulerAngles = new Vector3(ang.x,ang.y,0.0f);
+            float mouse = Input.GetAxis("Mouse ScrollWheel");
+            if (mouse < 0)
+            {
+                pos = transform.position;
+                transform.position = new Vector3(pos.x,pos.y - 1,pos.z);
+            }
+            else if(mouse > 0)
+            {
+                pos = transform.position;
+                transform.position = new Vector3(pos.x, pos.y + 1, pos.z);
+            }
         }
+
     }
 }
