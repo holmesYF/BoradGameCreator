@@ -31,7 +31,7 @@ public class HandCard : MonoBehaviour
         parent = transform.parent.gameObject;
         button.onClick.AddListener(OutPutHand);
         data = card_object.GetComponent<Data>();
-        StartCoroutine(SetSprite(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1));
+        StartCoroutine(SetSprite(this.data.getexeURL() + "\\TableGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1));
     }
 
     public IEnumerator SetSprite(String url)

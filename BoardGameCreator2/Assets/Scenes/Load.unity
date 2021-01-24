@@ -318,8 +318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294, y: 53}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -364.2, y: 147.2}
+  m_SizeDelta: {x: 300.4, y: 66.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229814353
 MonoBehaviour:
@@ -343,9 +343,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -420,9 +420,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 273
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -597,8 +597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292, y: -80}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -364.2, y: -103}
+  m_SizeDelta: {x: 300.4, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800314403
 MonoBehaviour:
@@ -968,18 +968,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Edit
-
-'
+  m_Text: EditMode
 --- !u!222 &920977936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1186,16 +1184,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 275
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GameStart
+  m_Text: LoadGame
 --- !u!222 &1432736335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1241,8 +1239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294, y: 32}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -364.2, y: 65.1}
+  m_SizeDelta: {x: 300.4, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582807507
 MonoBehaviour:
@@ -1379,8 +1377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294, y: -4.3380127}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -364.2, y: -18.5}
+  m_SizeDelta: {x: 300.4, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629510370
 MonoBehaviour:
@@ -1531,9 +1529,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 2
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1667,10 +1665,10 @@ RectTransform:
   m_Father: {fileID: 1136909521}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43.2, y: -0.0009994507}
-  m_SizeDelta: {x: 286.4, y: 389}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 113.6, y: -303.5}
+  m_SizeDelta: {x: 427.3, y: 607.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2013056185
 MonoBehaviour:
@@ -1691,7 +1689,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 21.53
   m_Viewport: {fileID: 202177621}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 571108431}

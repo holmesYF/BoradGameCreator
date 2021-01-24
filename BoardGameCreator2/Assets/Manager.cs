@@ -53,9 +53,9 @@ public class Manager : MonoBehaviourPunCallbacks,IHandOver
     {
         //GameObject obj = PhotonNetwork.Instantiate("Piece_prefab", new Vector3(0, 0, 0), Quaternion.identity);
 #if UNITY_EDITOR
-        datas = ControlJson.LoadJson(@"C:\Users\holme\Desktop\もいっこ用\BoardGameData\" + Load.FOLDER_NAME );
+        datas = ControlJson.LoadJson(@"C:\Users\holme\Desktop\もいっこ用\TableGameData\" + Load.FOLDER_NAME );
 #else
-        datas = ControlJson.LoadJson(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'),"BoardGameData",Load.FOLDER_NAME));
+        datas = ControlJson.LoadJson(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\'),"TableGameData",Load.FOLDER_NAME));
 #endif
         foreach (string item in datas)
         {

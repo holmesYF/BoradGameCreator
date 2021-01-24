@@ -18,7 +18,7 @@ public class Board : IObject
         
         this.SetBoardSize(data.size);
 
-        board.GetComponent<ViewControl>().LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
+        board.GetComponent<ViewControl>().LoadImage(this.data.getexeURL() + "\\TableGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
     public override void LeftClick()
     {

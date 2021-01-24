@@ -149,9 +149,9 @@ public class EditManager : MonoBehaviour
         String gamenamestring = gamename.text;
         Debug.Log("ExportButton");
 #if UNITY_EDITOR
-        path = @"C:\Users\holme\Desktop\もいっこ用\BoardGameData\" + gamenamestring;
+        path = @"C:\Users\holme\Desktop\もいっこ用\TableGameData\" + gamenamestring;
 #else
-        path = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\BoardGameData\" + gamenamestring;
+        path = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\TableGameData\" + gamenamestring;
 #endif
         if (!Directory.Exists(path))
         {
@@ -213,7 +213,7 @@ public class EditManager : MonoBehaviour
 
     public void testButton()
     {
-        File.Copy(@"C:\Users\holme\Desktop\ビルド\BoardGameData\オセロ\gleen.png", @"C:\Users\holme\Desktop\test\b.png");
+        File.Copy(@"C:\Users\holme\Desktop\ビルド\TableGameData\オセロ\gleen.png", @"C:\Users\holme\Desktop\test\b.png");
         Debug.Log("Test");
 
     }

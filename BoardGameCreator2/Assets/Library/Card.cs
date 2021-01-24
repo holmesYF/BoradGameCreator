@@ -31,7 +31,7 @@ public class Card : IObject
     }
     private void Start()
     {
-        this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
+        this.f_controller.LoadImage(this.data.getexeURL() + "\\TableGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
     private void Update()
     {
@@ -86,7 +86,7 @@ public class Card : IObject
         else
         {
             Debug.Log("change to image1");
-            this.f_controller.LoadImage(this.data.getexeURL() + "\\BoardGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
+            this.f_controller.LoadImage(this.data.getexeURL() + "\\TableGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
             this.saface = true;
         }
     }
