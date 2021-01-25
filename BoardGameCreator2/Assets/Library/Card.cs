@@ -7,8 +7,9 @@ public class Card : IObject
 {
     public Texture texture;
     private ViewControl f_controller;
-    private bool saface = true;
+    public bool saface = true;
     public IHandOver manager_handover;
+    Hand hand;
 
 
     public override void MouseScrollWheel(bool direction)
@@ -108,14 +109,26 @@ public class Card : IObject
         HideObject();
         manager_handover.AddHand(this.gameObject);
     }
-    public void SetManager_handover()
+    public void SetManager_handover(string manager_name)
     {
-        my_photonView.RPC("_SetManager_handover", RpcTarget.All);
+        my_photonView.RPC("_SetManager_handover", RpcTarget.All,manager_name);
     }
 
     [PunRPC]
-    private void _SetManager_handover()
+    private void _SetManager_handover(string manager_name)
     {
-        manager_handover =  GameObject.Find("GameManager").GetComponent<Manager>();
+        manager_handover =  GameObject.Find(manager_name).GetComponent<Manager>();
     }
+
+    //public void SetHand()
+    //{
+    //    my_photonView.RPC("_SetHand", RpcTarget.All);
+    //}
+
+    //private void _SetHand()
+    //{
+    //    hand = GameObject.Find("Player_prefab").GetComponent<Hand>();
+    //}
+
+
 }

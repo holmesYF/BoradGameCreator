@@ -231,9 +231,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 40076}
+      Script: {instanceID: 14620}
     - Class: 114
-      Script: {instanceID: 40078}
+      Script: {instanceID: 14622}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -378,7 +378,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 40072}
+      Script: {instanceID: 14640}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1394,7 +1394,7 @@ ScriptsOnlyBuild:
     className: Asteroid
   - hash:
       serializedVersion: 2
-      Hash: 2673d9a60e7ed485ee582ac1871407fa
+      Hash: ed2ce63c96185bf2a6994e4538990621
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -1436,7 +1436,7 @@ ScriptsOnlyBuild:
     className: SlotLanes
   - hash:
       serializedVersion: 2
-      Hash: 0e8951749f4899496d131a664a5d80b2
+      Hash: a68389f47529d6d5054619dbed98d390
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Card

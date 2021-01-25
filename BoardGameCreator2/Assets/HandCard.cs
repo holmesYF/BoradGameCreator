@@ -18,10 +18,11 @@ public class HandCard : MonoBehaviour
     Image image;
     Button button;
     public GameObject panel;
+    Hand hand;
 
     private void Awake()
     {
-        
+
         image = this.gameObject.GetComponent<Image>();
         button = this.gameObject.GetComponent<Button>();
     }
@@ -38,7 +39,7 @@ public class HandCard : MonoBehaviour
     {
         Debug.Log(url);
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-        
+
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -54,10 +55,11 @@ public class HandCard : MonoBehaviour
         }
     }
 
-    public void setCard(GameObject card_object)
+    public void setCard(GameObject card_object, Hand hand)
     {
         this.card_object = card_object;
         this.card_class = card_object.GetComponent<Card>();
+        this.hand = hand;
     }
 
     public void setPanel(GameObject panel)
@@ -69,7 +71,8 @@ public class HandCard : MonoBehaviour
     {
 
         card_class.Appear();
-        card_class.ChangeHavedFlag(false);
+        hand.SetHandGameobject(this.card_object);
+        //card_class.ChangeHavedFlag(true);
         panel.SetActive(false);
         Destroy(this.gameObject);
 

@@ -47,6 +47,8 @@ public class Deck : IObject
         GameObject card = this.card_list[pos];
         card.SetActive(true);
         card.GetComponent<Card>().ChangeHavedFlag(true);
+        card.GetComponent<Card>().saface = true;
+        card.GetComponent<Card>().ChangeObjectTextuer();
         this.card_list.RemoveAt(pos);
     }
 
