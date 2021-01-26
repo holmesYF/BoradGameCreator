@@ -231,9 +231,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 14620}
+      Script: {instanceID: 14362}
     - Class: 114
-      Script: {instanceID: 14622}
+      Script: {instanceID: 14364}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -378,7 +378,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 14640}
+      Script: {instanceID: 14382}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1835,4 +1835,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Load.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Editor.unity
-  playerPath: "C:/Users/holme/Desktop/\u30D3\u30EB\u30C92/BoardGameCreator2.exe"
+  playerPath: "C:/Users/holme/Desktop/BoradGameCreator/\u30D3\u30EB\u30C92/BoardGameCreator2.exe"

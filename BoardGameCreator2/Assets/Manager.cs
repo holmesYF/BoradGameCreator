@@ -113,7 +113,7 @@ public class Manager : MonoBehaviourPunCallbacks, IHandOver
                     }
                     else if (temp_data.type == "board")
                     {
-                        GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(pos_rate * count % 10, 0, pos_rate * (count / 10)), Quaternion.identity);
+                        GameObject obj = PhotonNetwork.Instantiate("BoardMover_prafab", new Vector3(0,0,0), Quaternion.identity);
                         obj.GetComponent<Data>().cloneData(data);
                         obj.GetComponent<Data>().setexeURL();
                     }
