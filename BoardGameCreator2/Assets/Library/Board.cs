@@ -20,10 +20,10 @@ public class Board : IObject
 
         board.GetComponent<ViewControl>().LoadImage(this.data.getexeURL() + "\\TableGameData\\" + Load.FOLDER_NAME + "\\" + this.data.imageURL1);
     }
-    public override void LeftClick()
-    {
-        throw new System.NotImplementedException();
-    }
+    //public override void LeftClick()
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 
     public override void PopUpInfo()
     {

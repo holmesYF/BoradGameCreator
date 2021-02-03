@@ -21,10 +21,10 @@ public class Deck : IObject
     }
 
 
-    public override void LeftClick()
-    {
+    //public override void LeftClick()
+    //{
 
-    }
+    //}
 
 
     public override void PopUpInfo()
@@ -48,7 +48,7 @@ public class Deck : IObject
         card.SetActive(true);
         card.GetComponent<Card>().ChangeHavedFlag(true);
         card.GetComponent<Card>().saface = true;
-        card.GetComponent<Card>().ChangeObjectTextuer();
+        card.GetComponent<Card>()._ChangeObjectTextuer();
         this.card_list.RemoveAt(pos);
     }
 

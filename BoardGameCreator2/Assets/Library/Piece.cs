@@ -6,7 +6,7 @@ using UnityEngine;
 public class Piece : IObject
 { 
     //private PhotonView my_photonView;  親クラスに実装
-    private ViewControl f_controller;
+    //private ViewControl f_controller;　親クラスに実装
     private bool saface = true;
 
     public override void Awake()
@@ -26,10 +26,10 @@ public class Piece : IObject
         my_photonView.RPC("ChangeObjectTextuer", RpcTarget.All, Array.Empty<object>());
     }
 
-    public override void LeftClick()
-    {
+    //public override void LeftClick()
+    //{
 
-    }
+    //}
 
 
     public override void PopUpInfo()

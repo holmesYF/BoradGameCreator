@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Card : IObject
 {
     public Texture texture;
-    private ViewControl f_controller;
+    //private ViewControl f_controller;　親に実装
     public bool saface = true;
     public IHandOver manager_handover;
     Hand hand;
@@ -27,7 +27,7 @@ public class Card : IObject
     public override void Awake()
     {
         base.Awake();
-        this.f_controller = base.gameObject.GetComponent<ViewControl>();
+        //this.f_controller = base.gameObject.GetComponent<ViewControl>();
         this.type = "card";
     }
     private void Start()
@@ -41,12 +41,12 @@ public class Card : IObject
     public override void HavedRightClick()
     {
         Debug.Log("Card click by right");
-        my_photonView.RPC("ChangeObjectTextuer", RpcTarget.All);
+        my_photonView.RPC("_ChangeObjectTextuer", RpcTarget.All);
     }
 
-    public override void LeftClick()
-    {
-    }
+    //public override void LeftClick()
+    //{
+    //}
 
     public GameObject GetObject()
     {
@@ -75,7 +75,7 @@ public class Card : IObject
     }
 
     [PunRPC]
-    public void ChangeObjectTextuer()
+    public void _ChangeObjectTextuer()
     {
         bool flag = this.saface;
         if (flag)
