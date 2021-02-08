@@ -66,8 +66,6 @@
   <ItemGroup>
     <Compile Include="Assets\_Data.cs" />
     <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\ControlJson.cs" />
-    <Compile Include="Assets\ControlString.cs" />
     <Compile Include="Assets\EditorScript\EditManager.cs" />
     <Compile Include="Assets\EditorScript\GameobjectPanel.cs" />
     <Compile Include="Assets\EditorScript\ImageName.cs" />
@@ -77,6 +75,8 @@
     <Compile Include="Assets\Info.cs" />
     <Compile Include="Assets\Library\Board.cs" />
     <Compile Include="Assets\Library\Card.cs" />
+    <Compile Include="Assets\Library\ControlJson.cs" />
+    <Compile Include="Assets\Library\ControlString.cs" />
     <Compile Include="Assets\Library\Data.cs" />
     <Compile Include="Assets\Library\Deck.cs" />
     <Compile Include="Assets\Library\Hand.cs" />

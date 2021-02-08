@@ -2,7 +2,7 @@
 using UnityEngine;
 using Photon.Pun;
 
-// Token: 0x02000007 RID: 7
+
 public class Card : IObject
 {
     public Texture texture;
